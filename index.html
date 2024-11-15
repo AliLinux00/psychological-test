@@ -12,58 +12,59 @@
         
         <!-- Вопросы -->
         <div class="question-container">
-            <div class="question">
+            <div class="question" id="question1">
                 <p>Вопрос 1: Как ты реагируешь на стрессовые ситуации?</p>
-                <button onclick="answer('a')">Спокойно, стараюсь контролировать эмоции.</button>
-                <button onclick="answer('b')">Переживаю, но стараюсь не показывать этого.</button>
-                <button onclick="answer('c')">Я нервничаю и показываю свои эмоции.</button>
+                <button onclick="answer('a', 1)">Спокойно, стараюсь контролировать эмоции.</button>
+                <button onclick="answer('b', 1)">Переживаю, но стараюсь не показывать этого.</button>
+                <button onclick="answer('c', 1)">Я нервничаю и показываю свои эмоции.</button>
             </div>
 
-            <div class="question">
+            <div class="question" id="question2">
                 <p>Вопрос 2: Как ты проводишь свободное время?</p>
-                <button onclick="answer('a')">Читаю, занимаюсь саморазвитием.</button>
-                <button onclick="answer('b')">Встречаюсь с друзьями, развлекаюсь.</button>
-                <button onclick="answer('c')">Люблю одиночество, провожу время в тишине.</button>
+                <button onclick="answer('a', 2)">Читаю, занимаюсь саморазвитием.</button>
+                <button onclick="answer('b', 2)">Встречаюсь с друзьями, развлекаюсь.</button>
+                <button onclick="answer('c', 2)">Люблю одиночество, провожу время в тишине.</button>
             </div>
 
-            <div class="question">
+            <div class="question" id="question3">
                 <p>Вопрос 3: Как ты решаешь проблемы?</p>
-                <button onclick="answer('a')">Действую по ситуации, спокойно анализируя.</button>
-                <button onclick="answer('b')">Думаю о возможных последствиях, но могу действовать импульсивно.</button>
-                <button onclick="answer('c')">Решаю все сразу, не всегда обдумывая.</button>
+                <button onclick="answer('a', 3)">Действую по ситуации, спокойно анализируя.</button>
+                <button onclick="answer('b', 3)">Думаю о возможных последствиях, но могу действовать импульсивно.</button>
+                <button onclick="answer('c', 3)">Решаю все сразу, не всегда обдумывая.</button>
             </div>
 
-            <div class="question">
+            <div class="question" id="question4">
                 <p>Вопрос 4: Как ты себя чувствуешь в незнакомых ситуациях?</p>
-                <button onclick="answer('a')">Я люблю новые вызовы, мне интересно.</button>
-                <button onclick="answer('b')">Мне немного некомфортно, но я справляюсь.</button>
-                <button onclick="answer('c')">Я стараюсь избегать незнакомых ситуаций.</button>
+                <button onclick="answer('a', 4)">Я люблю новые вызовы, мне интересно.</button>
+                <button onclick="answer('b', 4)">Мне немного некомфортно, но я справляюсь.</button>
+                <button onclick="answer('c', 4)">Я стараюсь избегать незнакомых ситуаций.</button>
             </div>
 
-            <div class="question">
+            <div class="question" id="question5">
                 <p>Вопрос 5: Как ты ведешь себя в коллективе?</p>
-                <button onclick="answer('a')">Я лидер, часто беру на себя инициативу.</button>
-                <button onclick="answer('b')">Я предпочитаю работать в команде, но не проявляю лидерские качества.</button>
-                <button onclick="answer('c')">Я предпочитаю оставаться в тени, не люблю выделяться.</button>
+                <button onclick="answer('a', 5)">Я лидер, часто беру на себя инициативу.</button>
+                <button onclick="answer('b', 5)">Я предпочитаю работать в команде, но не проявляю лидерские качества.</button>
+                <button onclick="answer('c', 5)">Я предпочитаю оставаться в тени, не люблю выделяться.</button>
             </div>
 
-            <div class="question">
+            <div class="question" id="question6">
                 <p>Вопрос 6: Как ты реагируешь на критику?</p>
-                <button onclick="answer('a')">Я воспринимаю критику спокойно и использую её для улучшения.</button>
-                <button onclick="answer('b')">Мне неприятно, но я стараюсь не показывать этого.</button>
-                <button onclick="answer('c')">Я часто обижаюсь и стараюсь не слушать критику.</button>
+                <button onclick="answer('a', 6)">Я воспринимаю критику спокойно и использую её для улучшения.</button>
+                <button onclick="answer('b', 6)">Мне неприятно, но я стараюсь не показывать этого.</button>
+                <button onclick="answer('c', 6)">Я часто обижаюсь и стараюсь не слушать критику.</button>
             </div>
 
-            <div class="question">
+            <div class="question" id="question7">
                 <p>Вопрос 7: Как ты планируешь своё будущее?</p>
-                <button onclick="answer('a')">Я ставлю цели и достигаю их, у меня есть план.</button>
-                <button onclick="answer('b')">Я живу моментом и не всегда планирую на будущее.</button>
-                <button onclick="answer('c')">Я предпочитаю импровизировать и смотреть, как всё сложится.</button>
+                <button onclick="answer('a', 7)">Я ставлю цели и достигаю их, у меня есть план.</button>
+                <button onclick="answer('b', 7)">Я живу моментом и не всегда планирую на будущее.</button>
+                <button onclick="answer('c', 7)">Я предпочитаю импровизировать и смотреть, как всё сложится.</button>
             </div>
         </div>
 
         <!-- Результат -->
         <div id="result" class="result"></div>
+        <button id="retry" style="display: none;" onclick="retryTest()">Пройти тест снова</button>
     </div>
 
     <script src="script.js"></script>
