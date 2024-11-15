@@ -1,41 +1,27 @@
-let answers = { a: 0, b: 0, c: 0 };
+document.addEventListener("DOMContentLoaded", function() {
+    let currentQuestion = 1;
 
-function answer(selected, questionNumber) {
-    // Подсчитываем выбранный ответ
-    answers[selected]++;
+    // Показываем первый вопрос
+    document.getElementById(question${currentQuestion}).style.display = 'block';
 
-    // Прячем текущий вопрос и показываем следующий
-    document.getElementById("question" + questionNumber).style.display = "none";
-    
-    if (questionNumber < 7) {
-        document.getElementById("question" + (questionNumber + 1)).style.display = "block";
-    } else {
-        showResult();
-    }
-}
-
-function showResult() {
-    let resultText = "";
-
-    if (answers.a > answers.b && answers.a > answers.c) {
-        resultText = "Ты стабильный человек, который ценит гармонию и спокойствие.";
-    } else if (answers.b > answers.a && answers.b > answers.c) {
-        resultText = "Ты активный и социальный человек, который часто ищет новые впечатления.";
-    } else {
-        resultText = "Ты склонен к одиночеству и introspection, ценишь своё время.";
-    }
-
-    document.getElementById("result").innerHTML = resultText;
-    document.getElementById("retry").style.display = "block";
-}
-
-function retryTest() {
-    // Сбросить все ответы и начать тест с первого вопроса
-    answers = { a: 0, b: 0, c: 0 };
-    document.getElementById("result").innerHTML = "";
-    document.getElementById("retry").style.display = "none";
-
-    for (let i = 1; i <= 7; i++) {
-        document.getElementById("question" + i).style.display = "block";
-    }
-}
+    // Обработчик для кнопок ответов
+    const buttons = document.querySelectorAll('.answer');
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Получаем id следующего вопроса
+            const nextQuestion = this.getAttribute('data-next');
+            
+            // Скрываем текущий вопрос
+            document.getElementById(question${currentQuestion}).style.display = 'none';
+            
+            // Если есть следующий вопрос, показываем его
+            if (nextQuestion !== 'result') {
+                currentQuestion++;
+                document.getElementById(nextQuestion).style.display = 'block';
+            } else {
+                // Показываем результат
+                document.getElementById('result').style.display = 'block';
+            }
+        });
+    });
+});
