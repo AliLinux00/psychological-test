@@ -1,27 +1,41 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let currentQuestion = 1;
+let currentQuestion = 1; // Начинаем с первого вопроса
+let totalQuestions = 7;  // Всего 7 вопросов
 
-    // Показываем первый вопрос
-    document.getElementById(question${currentQuestion}).style.display = 'block';
+// Функция для перехода к следующему вопросу
+function nextQuestion(answer) {
+    // Скрываем текущий вопрос
+    const currentQuestionDiv = document.querySelector(#question-container .question:nth-child(${currentQuestion}));
+    currentQuestionDiv.style.display = 'none';
 
-    // Обработчик для кнопок ответов
-    const buttons = document.querySelectorAll('.answer');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Получаем id следующего вопроса
-            const nextQuestion = this.getAttribute('data-next');
-            
-            // Скрываем текущий вопрос
-            document.getElementById(question${currentQuestion}).style.display = 'none';
-            
-            // Если есть следующий вопрос, показываем его
-            if (nextQuestion !== 'result') {
-                currentQuestion++;
-                document.getElementById(nextQuestion).style.display = 'block';
-            } else {
-                // Показываем результат
-                document.getElementById('result').style.display = 'block';
-            }
-        });
-    });
-});
+    // Увеличиваем номер вопроса
+    currentQuestion++;
+
+    // Если все вопросы пройдены, показываем результат
+    if (currentQuestion > totalQuestions) {
+        showResult();
+    } else {
+        // Показываем следующий вопрос
+        const nextQuestionDiv = document.querySelector(#question-container .question:nth-child(${currentQuestion}));
+        nextQuestionDiv.style.display = 'block';
+    }
+}
+
+// Функция для показа результата
+function showResult() {
+    // Скрываем все вопросы
+    document.getElementById('question-container').style.display = 'none';
+
+    // Показываем результат
+    document.getElementById('result-container').style.display = 'block';
+}
+
+// Функция для кнопки "Поделиться"
+function shareResult() {
+    const text = "Я прошел психологический тест! Пройди тоже, чтобы узнать результат!";
+    const url = window.location.href;
+    const whatsappUrl = https://wa.me/?text=${encodeURIComponent(text + " " + url)};
+    window.open(whatsappUrl, "_blank");
+}
+
+// Инициализируем первый вопрос
+document.querySelector(#question-container .question:nth-child(${currentQuestion})).style.display = 'block';
