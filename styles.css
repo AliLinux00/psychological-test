@@ -7,21 +7,29 @@ body {
     padding: 0;
 }
 
-/* Контейнер */
+/* Контейнер с тестом */
 .container {
     width: 90%;
-    max-width: 500px;
-    margin: 50px auto;
+    max-width: 500px; /* Ширина для адаптивности */
+    margin: 50px auto; /* Центрирование */
     padding: 20px;
-    background-color: #1e1e1e;
+    background-color: #1e1e1e; /* Темный блок */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Заголовки */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
 /* Вопросы */
 .question {
-    display: none; /* Скрываем все вопросы по умолчанию */
     margin-bottom: 20px;
+    font-size: 18px;
 }
 
 /* Кнопки */
@@ -29,8 +37,8 @@ button {
     width: 100%;
     padding: 10px 15px;
     margin: 10px 0;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4CAF50; /* Зеленый фон */
+    color: white; /* Белый текст */
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -39,14 +47,52 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Более светлый зеленый */
 }
 
 /* Результат */
-.result {
-    display: none; /* Скрываем результат */
+#result-container {
     text-align: center;
+    margin-top: 20px;
+}
+
+#result {
     font-size: 20px;
     font-weight: bold;
     color: #f4f4f4;
+}
+
+/* Кнопка для делания теста с друзьями */
+#shareButton {
+    background-color: #25D366; /* Зеленый WhatsApp */
+    font-size: 18px;
+}
+
+#shareButton:hover {
+    background-color: #128C7E; /* Тёмно-зеленый WhatsApp */
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .question {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    #result {
+        font-size: 18px;
+    }
 }
