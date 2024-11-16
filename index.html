@@ -16,7 +16,8 @@
             <button onclick="answer(0)">С трудом и раздражением</button>
         </div>
     </div>
-    <div id="result" class="hidden">
+    
+    <div id="result" class="result hidden">
         <p id="result-text"></p>
         <button onclick="showResult()">Узнать ответы</button>
     </div>
@@ -26,11 +27,14 @@
         <p>Отправьте 10 друзьям, чтобы узнать ответ!</p>
         <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
     </div>
+    
     <div id="final-result" class="hidden">
         <p id="final-result-text"></p>
+        <!-- Зелёная кнопка, которая появляется через 50 секунд -->
         <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать ответы</button>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
