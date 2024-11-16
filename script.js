@@ -76,13 +76,37 @@ function showQuestion() {
 }
 
 function showResult() {
-    const resultText = score >= 12
-        ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
-        : score >= 6
-        ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
-        : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
+    // Показать временное сообщение с просьбой поделиться
+    document.getElementById("message").classList.remove("hidden");
+    
+    // Скрыть кнопку "Узнать ответы"
+    document.querySelector("button").style.display = "none";
+    
+    // Показать кнопку для WhatsApp
+    document.querySelector("button").style.display = "inline-block";
 
-    document.getElementById("result-text").textContent = resultText; // Показать результат
+    // Устанавливаем таймер на 50 секунд
+    setTimeout(function() {
+        // По истечении 50 секунд показываем результат
+        const resultText = score >= 12
+            ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
+            : score >= 6
+            ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
+            : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
+        
+        // Отобразить результат
+        document.getElementById("final-result-text").textContent = resultText;
+        document.getElementById("final-result").classList.remove("hidden"); // Показываем реальный ответ
+        document.getElementById("message").classList.add("hidden"); // Скрываем временное сообщение
+    }, 50000); // 50 секунд
+}
+
+function shareOnWhatsApp() {
+    // URL для WhatsApp с предложением поделиться
+    const shareUrl = `https://wa.me/?text=Отправьте%2010%20друзьям%20чтобы%20узнать%20ответ!`;
+    
+    // Открываем WhatsApp для совместного использования
+    window.open(shareUrl, '_blank');
 }
 
 showQuestion();
