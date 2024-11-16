@@ -39,48 +39,16 @@ function answer(points) {
 function showResult() {
     const quiz = document.getElementById("quiz");
     const result = document.getElementById("result");
-    const message = document.getElementById("message");
+    quiz.style.display = "none";
+    result.classList.remove("hidden");
 
-    quiz.style.display = "none"; // Скрыть вопросы
-    result.classList.remove("hidden"); // Показать результат с кнопкой
-    message.classList.remove("hidden"); // Показать сообщение "Отправьте 10 друзьям"
-}
-
-function shareOnWhatsApp() {
-    const messageText = "Пройди интересный психологический тест! https://example.com"; // Ссылка на тест
-    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
-
-    // Открыть WhatsApp для отправки сообщения
-    window.open(whatsappURL, "_blank");
-
-    // Начать таймер на 50 секунд
-    setTimeout(() => {
-        const message = document.getElementById("message");
-        const showAnswerBtn = document.getElementById("show-answer-btn");
-
-        message.classList.add("hidden"); // Скрыть сообщение
-        showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать ответы"
-    }, 50000);
-}
-
-function displayFinalResult() {
-    const finalResult = document.getElementById("final-result");
-    const showAnswerBtn = document.getElementById("show-answer-btn");
-
-    let finalText = score >= 12
-        ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
-        : score >= 6
-        ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
-        : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
-
-    // Показать финальный результат
-    document.getElementById("final-result-text").textContent = finalText;
-
-    // Скрыть кнопку
-    showAnswerBtn.classList.add("hidden");
-
-    // Показать результат
-    finalResult.classList.remove("hidden");
+    if (score > 10) {
+        result.textContent = "Вы очень позитивный человек! Поддерживайте это настроение!";
+    } else if (score > 5) {
+        result.textContent = "Вы уравновешенный человек. Найдите время для отдыха и наслаждения!";
+    } else {
+        result.textContent = "У вас могут быть сложности, но помните, что всегда есть выход!";
+    }
 }
 
 // Показ первого вопроса
