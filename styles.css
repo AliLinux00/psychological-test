@@ -58,20 +58,34 @@ body {
 }
 
 /* Блок результата */
-.result {
-    width: 90%;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #222; /* Более темный фон для результата */
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-    font-size: 18px;
-}
-
-/* Скрытие элементов */
 .hidden {
     display: none;
+}
+
+.result-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #fff; /* Белый цвет текста для лучшего контраста с темным фоном */
+    padding: 20px;
+    background-color: #333; /* Темный фон блока с результатом */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    opacity: 0;
+    transform: translateY(20px); /* Эффект появления */
+    transition: all 0.5s ease;
+}
+
+.result-text p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f1c40f; /* Яркий цвет для заголовков текста */
+}
+
+.result-text.active {
+    opacity: 1;
+    transform: translateY(0); /* Плавное появление */
 }
