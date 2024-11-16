@@ -56,7 +56,6 @@ function showQuestion() {
         buttons.forEach((btn, index) => {
             btn.textContent = answers[currentQuestion][index].text;
             btn.onclick = () => answer(answers[currentQuestion][index].points);
-
         });
     } else {
         showResult();
@@ -80,44 +79,36 @@ function showResult() {
 }
 
 function shareOnWhatsApp() {
-         const messageText = "Пройди интересный психологический тест, и узнай какой ты человек! https://alilinux00.github.io/psychological-test/?q1=a&q2=c&q3=b&q4=b&q5=b&q6=b&q7=a"; // Ссылка на тест
+    const messageText = "Пройди интересный психологический тест, и узнай какой ты человек! https://alilinux00.github.io/psychological-test/";
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
-
 
     // Открыть WhatsApp для отправки сообщения
     window.open(whatsappURL, "_blank");
 
     // Начать таймер на 50 секунд
-setTimeout(() => {
     const message = document.getElementById("message");
     const showAnswerBtn = document.getElementById("show-answer-btn");
 
-    message.classList.add("hidden"); // Скрыть сообщение
-    showAnswerBtn.classList.remove("hidden"); // Показать кнопку
-}, 50000);
-
-if (message) {
-    message.classList.add("hidden");
-}
-if (showAnswerBtn) {
-    showAnswerBtn.classList.remove("hidden");
-}
-
-if (window.open) {
-    window.open(whatsappURL, "_blank");
-} else {
-    alert("Ваш браузер не поддерживает автоматическое открытие WhatsApp.");
+    setTimeout(() => {
+        if (message) {
+            message.classList.add("hidden"); // Скрыть сообщение
+        }
+        if (showAnswerBtn) {
+            showAnswerBtn.classList.remove("hidden"); // Показать кнопку
+        }
+    }, 50000);
 }
 
 function displayFinalResult() {
     const finalResult = document.getElementById("final-result");
     const showAnswerBtn = document.getElementById("show-answer-btn");
 
-    let finalText = score >= 12
-        ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
-        : score >= 6
-        ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
-        : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
+    const finalText =
+        score >= 12
+            ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
+            : score >= 6
+            ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
+            : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
 
     // Показать финальный результат
     document.getElementById("final-result-text").textContent = finalText;
