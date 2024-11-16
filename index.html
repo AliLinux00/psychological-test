@@ -3,66 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Психологический тест</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Многоступенчатый тест</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Пройди психологический тест</h1>
+        <h1>Пройди наш тест!</h1>
         
-        <div id="question-container">
-            <div class="question">
-                <p>Вопрос 1: Как вы себя ощущаете обычно?</p>
-                <button onclick="nextQuestion('a')">Ответ A</button>
-                <button onclick="nextQuestion('b')">Ответ B</button>
-                <button onclick="nextQuestion('c')">Ответ C</button>
-            </div>
-            <div class="question">
-                <p>Вопрос 2: Как вы решаете проблемы?</p>
-                <button onclick="nextQuestion('a')">Ответ A</button>
-                <button onclick="nextQuestion('b')">Ответ B</button>
-                <button onclick="nextQuestion('c')">Ответ C</button>
-            </div>
-            <div class="question">
-                <p>Вопрос 3: Как часто вы предпочитаете находиться в одиночестве?</p>
-                <button onclick="nextQuestion('a')">Ответ A</button>
-                <button onclick="nextQuestion('b')">Ответ B</button>
-                <button onclick="nextQuestion('c')">Ответ C</button>
-           </div>
-           <div class="question">
-                <p>Вопрос 4: Когда вы сталкиваетесь с трудной ситуацией, как вы на неё реагируете?</p>
-                <button onclick="nextQuestion('a')">Ответ A</button>
-                <button onclick="nextQuestion('b')">Ответ B</button>
-                <button onclick="nextQuestion('c')">Ответ C</button>
-          </div>
-          <div class="question">
-                <p>Вопрос 5: Как вы предпочитаете отдыхать в свободное время?</p>
-                <button onclick="nextQuestion('a')">Ответ A</button>
-                <button onclick="nextQuestion('b')">Ответ B</button>
-                <button onclick="nextQuestion('c')">Ответ C</button>
-          </div>
-          <div class="question">
-                <p>Вопрос 6: Какие качества вы цените в других людях?</p>
-                <button onclick="nextQuestion('a')">Ответ A</button>
-                <button onclick="nextQuestion('b')">Ответ B</button>
-                <button onclick="nextQuestion('c')">Ответ C</button>
-          </div>
-          <div class="question">
-               <p>Вопрос 7: Как бы вы описали своё отношение к риску?</p>
-               <button onclick="nextQuestion('a')">Ответ A</button>
-               <button onclick="nextQuestion('b')">Ответ B</button>
-               <button onclick="nextQuestion('c')">Ответ C</button>
-         </div>
+        <!-- Вопросы -->
+        <div class="question" id="question1">
+            <p>1. Какой ваш любимый цвет?</p>
+            <button class="answer" data-next="question2">Красный</button>
+            <button class="answer" data-next="question2">Синий</button>
+            <button class="answer" data-next="question2">Зеленый</button>
         </div>
-        
-        <div id="result-container" style="display:none;">
-            <div id="result">
-                <p>Отправь 10 друзьям, чтобы узнать свой результат!</p>
-                <button id="shareButton" onclick="shareResult()">Поделиться в WhatsApp</button>
-            </div>
+
+        <div class="question" id="question2">
+            <p>2. Где вы предпочитаете отдыхать?</p>
+            <button class="answer" data-next="question3">На природе</button>
+            <button class="answer" data-next="question3">На пляже</button>
+            <button class="answer" data-next="question3">В городе</button>
+        </div>
+
+        <div class="question" id="question3">
+            <p>3. Какую музыку вы предпочитаете?</p>
+            <button class="answer" data-next="question4">Рок</button>
+            <button class="answer" data-next="question4">Поп</button>
+            <button class="answer" data-next="question4">Классическую</button>
+        </div>
+
+        <div class="question" id="question4">
+            <p>4. Какой ваш стиль в одежде?</p>
+            <button class="answer" data-next="question5">Классический</button>
+            <button class="answer" data-next="question5">Спортивный</button>
+            <button class="answer" data-next="question5">Кэжуал</button>
+        </div>
+
+        <div class="question" id="question5">
+            <p>5. Чем вы предпочитаете заниматься в свободное время?</p>
+            <button class="answer" data-next="question6">Читать</button>
+            <button class="answer" data-next="question6">Заниматься спортом</button>
+            <button class="answer" data-next="question6">Встречаться с друзьями</button>
+        </div>
+
+        <div class="question" id="question6">
+            <p>6. Как вы относитесь к риску?</p>
+            <button class="answer" data-next="question7">Люблю рисковать</button>
+            <button class="answer" data-next="question7">Предпочитаю безопасность</button>
+            <button class="answer" data-next="question7">Иногда рискую</button>
+        </div>
+
+        <div class="question" id="question7">
+            <p>7. Какое ваше отношение к новому?</p>
+            <button class="answer" data-next="result">Люблю пробовать новое</button>
+            <button class="answer" data-next="result">Мне нравится стабильность</button>
+            <button class="answer" data-next="result">Иногда пробую новое</button>
+        </div>
+
+        <!-- Результат -->
+        <div id="result" class="result">
+            <h2>Ваш результат</h2>
+            <p>Спасибо за прохождение теста!</p>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
