@@ -4,21 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Психологический тест</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Пройди психологический тест</h1>
-        <div id="test">
-            <p class="question" id="question"></p>
-            <button class="option" onclick="answer('a')">Ответ A</button>
-            <button class="option" onclick="answer('b')">Ответ B</button>
-            <button class="option" onclick="answer('c')">Ответ C</button>
+        <div id="quiz">
+            <!-- Здесь вопросы и кнопки будут генерироваться динамически -->
         </div>
-        <div id="result" style="display: none;">
-            <p>Чтобы узнать свой результат, отправьте эту ссылку 10 друзьям:</p>
-            <button id="share" onclick="share()">Поделиться в WhatsApp</button>
-        </div>
+        <div id="result" style="display: none;"></div>
     </div>
     <script src="script.js"></script>
 </body>
