@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,6 @@
 </head>
 <body>
     <h1>Психологический тест</h1>
-
-    <!-- Контейнер для теста -->
     <div id="quiz">
         <div class="question" id="question">Как вы начинаете утро?</div>
         <div class="answers">
@@ -18,20 +16,16 @@
             <button onclick="answer(0)">С трудом и раздражением</button>
         </div>
     </div>
-
-    <!-- Результаты теста -->
-    <div id="result" class="result hidden">
+    <div id="result" class="hidden">
         <p id="result-text"></p>
         <button onclick="showResult()">Узнать ответы</button>
     </div>
 
-    <!-- Сообщение для отправки друзьям -->
+    <!-- Новые элементы -->
     <div id="message" class="hidden">
         <p>Отправьте 10 друзьям, чтобы узнать ответ!</p>
         <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
     </div>
-
-    <!-- Финальный результат -->
     <div id="final-result" class="hidden">
         <p id="final-result-text"></p>
         <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать ответы</button>
