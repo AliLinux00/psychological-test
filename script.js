@@ -75,6 +75,7 @@ function showQuestion() {
     });
 }
 
+
 function showResult() {
     const resultText = score >= 12
         ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
@@ -85,6 +86,27 @@ function showResult() {
     document.getElementById("result-text").textContent = resultText; // Показать результат
 }
 
+// Функция для показа сообщения и кнопки через 50 секунд
+function showMessageAndButton() {
+    setTimeout(() => {
+        document.getElementById('message').classList.remove('hidden');  // Показываем сообщение
+        document.getElementById('show-answer-btn').classList.remove('hidden');  // Показываем зелёную кнопку
+    }, 50000);  // 50 секунд
+}
+
+// Функция для отображения финального ответа
+function displayFinalResult() {
+    const finalText = score >= 12
+        ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
+        : score >= 6
+        ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
+        : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
+
+    document.getElementById('final-result-text').textContent = finalText;
+    document.getElementById('final-result').classList.remove('hidden');  // Показываем финальный результат
+}
+
+// Вставьте вызов этой функции в нужное место, например, когда пользователь нажимает кнопку "Узнать ответы"
 
 
 
