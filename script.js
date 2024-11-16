@@ -49,65 +49,71 @@ const answers = [
 let currentQuestion = 0;
 let score = 0;
 
-function answer(points) {
-    score += points;
-    currentQuestion++;
-
+function showQuestion() {
     if (currentQuestion < questions.length) {
-        showQuestion(); // Переход к следующему вопросу
+        document.getElementById("question").textContent = questions[currentQuestion];
+        const buttons = document.querySelectorAll(".answers button");
+        buttons.forEach((btn, index) => {
+            btn.textContent = answers[index][0];
+            btn.onclick = () => answer(answers[index][1]);
+        });
     } else {
-        // Когда вопросы закончены, скрываем блок с вопросами и показываем кнопку для отображения результата
-        document.getElementById("quiz").style.display = "none"; // Скрыть блок с вопросами
-        document.getElementById("result").classList.remove("hidden"); // Показать кнопку "Узнать ответы"
+        showResult();
     }
 }
 
-
-function showQuestion() {
-    document.getElementById("question").textContent = questions[currentQuestion];
-    const answersContainer = document.querySelector(".answers");
-    answersContainer.innerHTML = "";
-    answers[currentQuestion].forEach(option => {
-        const button = document.createElement("button");
-        button.textContent = option.text;
-        button.onclick = () => answer(option.points);
-        answersContainer.appendChild(button);
-    });
+function answer(points) {
+    score += points;
+    currentQuestion++;
+    showQuestion();
 }
-
 
 function showResult() {
-    const resultText = score >= 12
-        ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
-        : score >= 6
-        ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
-        : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
+    const quiz = document.getElementById("quiz");
+    const result = document.getElementById("result");
+    const message = document.getElementById("message");
 
-    document.getElementById("result-text").textContent = resultText; // Показать результат
+    quiz.style.display = "none"; // Скрыть вопросы
+    result.classList.remove("hidden"); // Показать результат с кнопкой
+    message.classList.remove("hidden"); // Показать сообщение "Отправьте 10 друзьям"
 }
 
-// Функция для показа сообщения и кнопки через 50 секунд
-function showMessageAndButton() {
+function shareOnWhatsApp() {
+    const messageText = "Пройди интересный психологический тест! https://example.com"; // Ссылка на тест
+    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
+
+    // Открыть WhatsApp для отправки сообщения
+    window.open(whatsappURL, "_blank");
+
+    // Начать таймер на 50 секунд
     setTimeout(() => {
-        document.getElementById('message').classList.remove('hidden');  // Показываем сообщение
-        document.getElementById('show-answer-btn').classList.remove('hidden');  // Показываем зелёную кнопку
-    }, 50000);  // 50 секунд
+        const message = document.getElementById("message");
+        const showAnswerBtn = document.getElementById("show-answer-btn");
+
+        message.classList.add("hidden"); // Скрыть сообщение
+        showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать ответы"
+    }, 50000);
 }
 
-// Функция для отображения финального ответа
 function displayFinalResult() {
-    const finalText = score >= 12
+    const finalResult = document.getElementById("final-result");
+    const showAnswerBtn = document.getElementById("show-answer-btn");
+
+    let finalText = score >= 12
         ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
         : score >= 6
         ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
         : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
 
-    document.getElementById('final-result-text').textContent = finalText;
-    document.getElementById('final-result').classList.remove('hidden');  // Показываем финальный результат
+    // Показать финальный результат
+    document.getElementById("final-result-text").textContent = finalText;
+
+    // Скрыть кнопку
+    showAnswerBtn.classList.add("hidden");
+
+    // Показать результат
+    finalResult.classList.remove("hidden");
 }
 
-// Вставьте вызов этой функции в нужное место, например, когда пользователь нажимает кнопку "Узнать ответы"
-
-
-
+// Показ первого вопроса
 showQuestion();
