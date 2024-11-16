@@ -103,7 +103,7 @@ function showResult() {
 
 function shareOnWhatsApp() {
     // Новый текст сообщения
-    const message = encodeURIComponent("Этот тест помог мне узнать больше о себе! Пройди и ты: https://your-website-link.com");
+    const message = encodeURIComponent("Этот тест помог мне узнать больше о себе! Пройди и ты: https://alilinux00.github.io/psychological-test/?q1=a&amp;q2=c&amp;q3=b&amp;q4=b&amp;q5=b&amp;q6=b&amp;q7=a");
     
     // URL для WhatsApp с новым сообщением
     const shareUrl = `https://wa.me/?text=${message}`;
