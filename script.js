@@ -89,20 +89,28 @@ function showResult() {
     }, 50000); // 50 секунд
 }
 
+// Функция для показа сообщения и кнопки через 50 секунд
+function showMessageAndButton() {
+    setTimeout(() => {
+        document.getElementById('message').classList.remove('hidden');  // Показываем сообщение
+        document.getElementById('show-answer-btn').classList.remove('hidden');  // Показываем зелёную кнопку
+    }, 50000);  // 50 секунд
+}
+
+// Функция для отображения финального ответа
 function displayFinalResult() {
-    // Логика для отображения результата
-    const resultText = score >= 12
+    const finalText = score >= 12
         ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
         : score >= 6
         ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
         : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
 
-    // Показываем результат и скрываем другие элементы
-    document.getElementById("final-result-text").textContent = resultText;
-    document.getElementById("show-answer-btn").classList.add("hidden"); // Скрываем кнопку
-    document.getElementById("message").classList.add("hidden"); // Скрываем временное сообщение
-    document.getElementById("final-result").classList.remove("hidden"); // Показываем результат
+    document.getElementById('final-result-text').textContent = finalText;
+    document.getElementById('final-result').classList.remove('hidden');  // Показываем финальный результат
 }
+
+// Вставьте вызов этой функции в нужное место, например, когда пользователь нажимает кнопку "Узнать ответы"
+
 
 
 function shareOnWhatsApp() {
