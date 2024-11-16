@@ -86,7 +86,7 @@ function showResult() {
     setTimeout(function() {
         // Показываем зелёную кнопку "Узнать ответы"
         document.getElementById("show-answer-btn").classList.remove("hidden");
-    }, 50000); // 50 секунд
+    }, 5000); // 50 секунд
 }
 
 // Функция для показа сообщения и кнопки через 50 секунд
@@ -94,7 +94,7 @@ function showMessageAndButton() {
     setTimeout(() => {
         document.getElementById('message').classList.remove('hidden');  // Показываем сообщение
         document.getElementById('show-answer-btn').classList.remove('hidden');  // Показываем зелёную кнопку
-    }, 50000);  // 50 секунд
+    }, 5000);  // 50 секунд
 }
 
 // Функция для отображения финального ответа
