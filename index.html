@@ -8,22 +8,28 @@
 </head>
 <body>
     <h1>Психологический тест</h1>
+    <!-- Блок с вопросами -->
     <div id="quiz">
         <div class="question" id="question">Как вы начинаете утро?</div>
         <div class="answers">
-            <button></button>
-            <button></button>
-            <button></button>
+            <button aria-label="Ответ 1"></button>
+            <button aria-label="Ответ 2"></button>
+            <button aria-label="Ответ 3"></button>
         </div>
     </div>
+
+    <!-- Блок промежуточного результата -->
     <div id="result" class="hidden">
         <p id="result-text"></p>
         <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
         <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать результат</button>
     </div>
+
+    <!-- Блок с финальным результатом -->
     <div id="final-result" class="hidden">
         <p id="final-result-text"></p>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
