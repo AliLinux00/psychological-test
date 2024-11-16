@@ -102,8 +102,11 @@ function showResult() {
 }
 
 function shareOnWhatsApp() {
-    // URL для WhatsApp с предложением поделиться
-    const shareUrl = `https://wa.me/?text=Отправьте%2010%20друзьям%20чтобы%20узнать%20ответ!`;
+    // Новый текст сообщения
+    const message = encodeURIComponent("Этот тест помог мне узнать больше о себе! Пройди и ты: https://your-website-link.com");
+    
+    // URL для WhatsApp с новым сообщением
+    const shareUrl = `https://wa.me/?text=${message}`;
     
     // Открываем WhatsApp для совместного использования
     window.open(shareUrl, '_blank');
