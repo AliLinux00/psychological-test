@@ -78,28 +78,32 @@ function showQuestion() {
 function showResult() {
     // Показать временное сообщение с просьбой поделиться
     document.getElementById("message").classList.remove("hidden");
-    
+
     // Скрыть кнопку "Узнать ответы"
     document.querySelector("button").style.display = "none";
-    
-    // Показать кнопку для WhatsApp
-    document.querySelector("button").style.display = "inline-block";
 
     // Устанавливаем таймер на 50 секунд
     setTimeout(function() {
-        // По истечении 50 секунд показываем результат
-        const resultText = score >= 12
-            ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
-            : score >= 6
-            ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
-            : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
-        
-        // Отобразить результат
-        document.getElementById("final-result-text").textContent = resultText;
-        document.getElementById("final-result").classList.remove("hidden"); // Показываем реальный ответ
-        document.getElementById("message").classList.add("hidden"); // Скрываем временное сообщение
+        // Показываем зелёную кнопку "Узнать ответы"
+        document.getElementById("show-answer-btn").classList.remove("hidden");
     }, 50000); // 50 секунд
 }
+
+function displayFinalResult() {
+    // Логика для отображения результата
+    const resultText = score >= 12
+        ? "Вы очень позитивный человек! Продолжайте радоваться жизни!"
+        : score >= 6
+        ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
+        : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
+
+    // Показываем результат и скрываем другие элементы
+    document.getElementById("final-result-text").textContent = resultText;
+    document.getElementById("show-answer-btn").classList.add("hidden"); // Скрываем кнопку
+    document.getElementById("message").classList.add("hidden"); // Скрываем временное сообщение
+    document.getElementById("final-result").classList.remove("hidden"); // Показываем результат
+}
+
 
 function shareOnWhatsApp() {
     // Новый текст сообщения
