@@ -1,73 +1,61 @@
+/* Основные стили */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212; /* Темный фон */
-    color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
-    text-align: center;
+    background-color: #f3f4f6;
 }
 
 h1 {
-    font-size: 24px;
-    color: #f4f4f4;
-    text-align: center;
-    margin-top: 20px;
+    margin-top: 50px;
+    color: #333;
 }
 
 #quiz {
-    margin: 50px auto;
-    padding: 20px;
-    max-width: 500px;
-    background-color: #1e1e1e; /* Темный блок */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+}
+
+.question {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .answers button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #4CAF50; /* Зеленая кнопка */
+    background-color: #4CAF50;
     color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    margin: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 .answers button:hover {
     background-color: #45a049;
 }
 
-#result {
-width: 90%;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #000000; /* черный */
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-    font-size: 18px;
+/* Результаты */
+.result, #message, #final-result {
+    margin-top: 30px;
 }
 
+/* Скрытые элементы */
 .hidden {
     display: none;
 }
 
 #show-answer-btn {
-    background-color: #4CAF50; /* Зелёный фон */
+    background-color: green;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 #show-answer-btn:hover {
-    background-color: #45a049; /* Более тёмный зелёный */
+    background-color: darkgreen;
 }
