@@ -4,93 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Психологический тест</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212; /* Темный фон */
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .question {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        button {
-            display: block;
-            width: 80%;
-            margin: 10px auto;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="quiz">
         <div class="question" id="question">Как вы начинаете утро?</div>
-        <button onclick="answer(2)">С радостью и энергией</button>
-        <button onclick="answer(1)">Спокойно, без лишней суеты</button>
-        <button onclick="answer(0)">С трудом и раздражением</button>
+        <div class="answers">
+            <button onclick="answer(2)">С радостью и энергией</button>
+            <button onclick="answer(1)">Спокойно, без лишней суеты</button>
+            <button onclick="answer(0)">С трудом и раздражением</button>
+        </div>
     </div>
     <div id="result"></div>
 
-    <script>
-        // Вопросы и подсчет очков
-        const questions = [
-            "Как вы начинаете утро?",
-            "Как вы относитесь к неожиданным событиям?",
-            "Насколько часто вы чувствуете радость?",
-            "Как вы реагируете на критику?",
-            "Насколько вы уверены в себе?"
-        ];
-
-        let currentQuestion = 0;
-        let score = 0;
-
-        function answer(points) {
-            // Добавляем очки
-            score += points;
-
-            // Переходим к следующему вопросу или показываем результат
-            currentQuestion++;
-            if (currentQuestion < questions.length) {
-                document.getElementById("question").innerText = questions[currentQuestion];
-            } else {
-                showResult();
-            }
-        }
-
-        function showResult() {
-            document.getElementById("quiz").style.display = "none";
-
-            let resultText = "";
-            if (score >= 8) {
-                resultText = "Вы очень позитивный человек! Сохраняйте этот настрой.";
-            } else if (score >= 4) {
-                resultText = "У вас сбалансированный подход к жизни, но иногда можно добавить больше позитива.";
-            } else {
-                resultText = "Вы склонны к депрессивным настроениям. Попробуйте сосредотачиваться на радостных моментах.";
-            }
-
-            document.getElementById("result").innerText = resultText;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
