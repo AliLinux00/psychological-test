@@ -56,3 +56,18 @@ width: 90%;
 .hidden {
     display: none;
 }
+
+#show-answer-btn {
+    background-color: #4CAF50; /* Зелёный фон */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#show-answer-btn:hover {
+    background-color: #45a049; /* Более тёмный зелёный */
+}
