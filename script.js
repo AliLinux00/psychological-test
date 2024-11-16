@@ -1,41 +1,38 @@
-let currentQuestion = 1; // Начинаем с первого вопроса
-let totalQuestions = 7;  // Всего 7 вопросов
+const questions = [
+    "Какой ваш любимый цвет?",
+    "Что вы предпочитаете делать в свободное время?",
+    "Какая ваша главная черта характера?",
+    "Как вы реагируете на стрессовые ситуации?",
+    "Что вас больше всего мотивирует?",
+    "Какая ваша любимая еда?",
+    "Что вы цените в людях больше всего?"
+];
 
-// Функция для перехода к следующему вопросу
-function nextQuestion(answer) {
-    // Скрываем текущий вопрос
-    const currentQuestionDiv = document.querySelector(#question-container .question:nth-child(${currentQuestion}));
-    currentQuestionDiv.style.display = 'none';
+let currentQuestion = 0;
 
-    // Увеличиваем номер вопроса
+function loadQuestion() {
+    const questionElement = document.getElementById("question");
+    questionElement.textContent = questions[currentQuestion];
+}
+
+function answer(choice) {
     currentQuestion++;
-
-    // Если все вопросы пройдены, показываем результат
-    if (currentQuestion > totalQuestions) {
-        showResult();
+    if (currentQuestion < questions.length) {
+        loadQuestion();
     } else {
-        // Показываем следующий вопрос
-        const nextQuestionDiv = document.querySelector(#question-container .question:nth-child(${currentQuestion}));
-        nextQuestionDiv.style.display = 'block';
+        showResult();
     }
 }
 
-// Функция для показа результата
 function showResult() {
-    // Скрываем все вопросы
-    document.getElementById('question-container').style.display = 'none';
-
-    // Показываем результат
-    document.getElementById('result-container').style.display = 'block';
+    document.getElementById("test").style.display = "none";
+    document.getElementById("result").style.display = "block";
 }
 
-// Функция для кнопки "Поделиться"
-function shareResult() {
-    const text = "Я прошел психологический тест! Пройди тоже, чтобы узнать результат!";
-    const url = window.location.href;
-    const whatsappUrl = https://wa.me/?text=${encodeURIComponent(text + " " + url)};
-    window.open(whatsappUrl, "_blank");
+function share() {
+    const url = "https://alilinux00.github.io/psychological-test/";
+    const message = Пройди этот интересный тест и узнай свой результат! ${url};
+    window.open(https://wa.me/?text=${encodeURIComponent(message)});
 }
 
-// Инициализируем первый вопрос
-document.querySelector(#question-container .question:nth-child(${currentQuestion})).style.display = 'block';
+loadQuestion();
