@@ -48,7 +48,7 @@ function showResult() {
 
 function shareOnWhatsApp() {
     const messageText = "Пройди интересный психологический тест! https://example.com"; // Ссылка на тест
-    const whatsappURL = https://wa.me/?text=${encodeURIComponent(messageText)};
+    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
 
     // Открыть WhatsApp для отправки сообщения
     window.open(whatsappURL, "_blank");
