@@ -54,8 +54,9 @@ function showQuestion() {
         document.getElementById("question").textContent = questions[currentQuestion];
         const buttons = document.querySelectorAll(".answers button");
         buttons.forEach((btn, index) => {
-            btn.textContent = answers[index][0];
-            btn.onclick = () => answer(answers[index][1]);
+            btn.textContent = answers[currentQuestion][index].text;
+            btn.onclick = () => answer(answers[currentQuestion][index].points);
+
         });
     } else {
         showResult();
@@ -79,20 +80,33 @@ function showResult() {
 }
 
 function shareOnWhatsApp() {
-    const messageText = "Пройди интересный психологический тест! https://example.com"; // Ссылка на тест
-    const whatsappURL = https://wa.me/?text=${encodeURIComponent(messageText)};
+         const messageText = "Пройди интересный психологический тест, и узнай какой ты человек! https://alilinux00.github.io/psychological-test/?q1=a&q2=c&q3=b&q4=b&q5=b&q6=b&q7=a"; // Ссылка на тест
+    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
+
 
     // Открыть WhatsApp для отправки сообщения
     window.open(whatsappURL, "_blank");
 
     // Начать таймер на 50 секунд
-    setTimeout(() => {
-        const message = document.getElementById("message");
-        const showAnswerBtn = document.getElementById("show-answer-btn");
+setTimeout(() => {
+    const message = document.getElementById("message");
+    const showAnswerBtn = document.getElementById("show-answer-btn");
 
-        message.classList.add("hidden"); // Скрыть сообщение
-        showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать ответы"
-    }, 50000);
+    message.classList.add("hidden"); // Скрыть сообщение
+    showAnswerBtn.classList.remove("hidden"); // Показать кнопку
+}, 50000);
+
+if (message) {
+    message.classList.add("hidden");
+}
+if (showAnswerBtn) {
+    showAnswerBtn.classList.remove("hidden");
+}
+
+if (window.open) {
+    window.open(whatsappURL, "_blank");
+} else {
+    alert("Ваш браузер не поддерживает автоматическое открытие WhatsApp.");
 }
 
 function displayFinalResult() {
