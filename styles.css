@@ -1,3 +1,4 @@
+/* Основной стиль для всего документа */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121212; /* Темный фон */
@@ -7,14 +8,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh; /* Обеспечивает корректное отображение на больших экранах */
 }
 
+/* Заголовок */
 .title {
     margin-top: 20px;
     font-size: 24px;
     color: #4CAF50; /* Зеленый цвет заголовка */
+    text-align: center;
 }
 
+/* Блок вопросов */
 #quiz {
     width: 90%;
     max-width: 500px;
@@ -25,15 +30,18 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Вопрос */
 .question {
     margin-bottom: 20px;
     font-size: 18px;
     text-align: center;
+    line-height: 1.4; /* Удобочитаемость текста */
 }
 
+/* Кнопки для ответов */
 .answers button {
     width: 100%;
-    padding: 10px;
+    padding: 12px 15px;
     margin: 10px 0;
     background-color: #4CAF50;
     color: white;
@@ -41,19 +49,21 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .answers button:hover {
     background-color: #45a049;
+    transform: scale(1.03); /* Небольшое увеличение при наведении */
 }
 
+/* Блок результата */
 .result {
     width: 90%;
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #000000; /* Зеленый фон для результата */
+    background-color: #222; /* Более темный фон для результата */
     color: white;
     border-radius: 10px;
     text-align: center;
@@ -61,6 +71,7 @@ body {
     font-size: 18px;
 }
 
+/* Скрытие элементов */
 .hidden {
     display: none;
 }
