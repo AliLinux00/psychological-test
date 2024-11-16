@@ -1,61 +1,66 @@
-/* Основные стили */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Темный фон */
+    color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    margin-top: 50px;
-    color: #333;
+.title {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #4CAF50; /* Зеленый цвет заголовка */
 }
 
 #quiz {
-    margin-top: 50px;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 .question {
-    font-size: 24px;
     margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
 }
 
 .answers button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
     border: none;
-    margin: 10px;
-    cursor: pointer;
+    border-radius: 5px;
     font-size: 16px;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .answers button:hover {
     background-color: #45a049;
 }
 
-/* Результаты */
-.result, #message, #final-result {
-    margin-top: 30px;
+.result {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #4CAF50; /* Зеленый фон для результата */
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    font-size: 18px;
 }
 
-/* Скрытые элементы */
 .hidden {
     display: none;
-}
-
-#show-answer-btn {
-    background-color: green;
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-#show-answer-btn:hover {
-    background-color: darkgreen;
 }
