@@ -1,28 +1,32 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #121212; /* Темный фон */
-    color: #fff;
-    text-align: center;
+    color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    text-align: center;
 }
 
-.question {
-    font-size: 24px;
-    margin-bottom: 20px;
+#quiz {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 500px;
+    background-color: #1e1e1e; /* Темный блок */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .answers button {
     display: block;
-    width: 80%;
-    margin: 10px auto;
+    width: 100%;
+    margin: 10px 0;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Зеленая кнопка */
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .answers button:hover {
@@ -31,5 +35,5 @@ body {
 
 #result {
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 18px;
 }
