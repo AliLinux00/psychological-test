@@ -11,27 +11,16 @@
     <div id="quiz">
         <div class="question" id="question">Как вы начинаете утро?</div>
         <div class="answers">
-            <button onclick="answer(2)">С радостью и энергией</button>
-            <button onclick="answer(1)">Спокойно, без лишней суеты</button>
-            <button onclick="answer(0)">С трудом и раздражением</button>
+            <button></button>
+            <button></button>
+            <button></button>
         </div>
     </div>
     <div id="result" class="hidden">
         <p id="result-text"></p>
-        <button onclick="showResult()">Узнать ответы</button>
-    </div>
-
-    <!-- Новые элементы -->
-    <div id="message" class="hidden">
-        <p>Отправьте 10 друзьям, чтобы узнать ответ!</p>
         <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
+        <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать результат</button>
     </div>
-    <div id="final-result" class="hidden">
-        <p id="final-result-text"></p>
-        <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать ответы</button>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
-
