@@ -1,56 +1,95 @@
-// Вопросы для теста
+// Вопросы и ответы
 const questions = [
-    { question: "Какой ваш любимый цвет?", answers: ["Красный", "Синий", "Зеленый"] },
-    { question: "Что вам нравится больше всего?", answers: ["Книги", "Фильмы", "Спорт"] },
-    { question: "Как вы предпочитаете отдыхать?", answers: ["Дома", "На природе", "С друзьями"] },
-    { question: "Что вам ближе?", answers: ["Тишина", "Шум", "Равновесие"] },
-    { question: "Как вы реагируете на стресс?", answers: ["Спокойно", "Эмоционально", "Игнорирую"] },
-    { question: "Как вы общаетесь?", answers: ["Много говорю", "Слушаю", "Баланс"] },
-    { question: "Как вы воспринимаете новое?", answers: ["С интересом", "С опасением", "С безразличием"] }
+    {
+        text: "Как вы начинаете утро?",
+        answers: [
+            { text: "С радостью и энергией", points: 2 },
+            { text: "Спокойно, без лишней суеты", points: 1 },
+            { text: "С трудом и раздражением", points: 0 }
+        ]
+    },
+    {
+        text: "Как вы относитесь к неожиданным событиям?",
+        answers: [
+            { text: "С интересом и готовностью", points: 2 },
+            { text: "Спокойно, но с осторожностью", points: 1 },
+            { text: "С тревогой и страхом", points: 0 }
+        ]
+    },
+    {
+        text: "Насколько часто вы чувствуете радость?",
+        answers: [
+            { text: "Каждый день", points: 2 },
+            { text: "Иногда", points: 1 },
+            { text: "Редко", points: 0 }
+        ]
+    },
+    {
+        text: "Как вы реагируете на критику?",
+        answers: [
+            { text: "Конструктивно", points: 2 },
+            { text: "Смиренно", points: 1 },
+            { text: "С обидой", points: 0 }
+        ]
+    },
+    {
+        text: "Насколько вы уверены в себе?",
+        answers: [
+            { text: "Полностью уверен", points: 2 },
+            { text: "Иногда сомневаюсь", points: 1 },
+            { text: "Часто сомневаюсь", points: 0 }
+        ]
+    }
 ];
 
-let currentQuestionIndex = 0;
-const userAnswers = [];
+let currentQuestion = 0;
+let score = 0;
 
-// Элементы
-const quizDiv = document.getElementById('quiz');
-const resultDiv = document.getElementById('result');
+// Функция для обработки ответа
+function answer(points) {
+    score += points; // Добавляем очки
+    currentQuestion++; // Переходим к следующему вопросу
 
-// Показываем вопрос
-function showQuestion() {
-    const question = questions[currentQuestionIndex];
-    quizDiv.innerHTML = `
-        <div class="question">${question.question}</div>
-        ${question.answers.map((answer, index) => 
-            <button onclick="handleAnswer(${index})">${answer}</button>
-        ).join('')}
-    `;
-}
-
-// Обработка ответа
-function handleAnswer(answerIndex) {
-    userAnswers.push(answerIndex);
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex < questions.length) {
-        showQuestion();
+    if (currentQuestion < questions.length) {
+        showQuestion(); // Показываем следующий вопрос
     } else {
-        showResult();
+        showResult(); // Показываем результат
     }
 }
 
-// Показ результата
-function showResult() {
-    quizDiv.style.display = 'none';
-    resultDiv.style.display = 'block';
-    resultDiv.innerHTML = `
-        Отправь 10 друзьям, чтобы узнать результат!
-        <br><br>
-        <a href="https://wa.me/?text=Я%20только%20что%20прошел%20психологический%20тест!%20Пройди%20и%20ты:%20https://alilinux00.github.io/psychological-test/" target="_blank">
-            <button>Поделиться в WhatsApp</button>
-        </a>
-    `;
+// Функция для отображения вопроса
+function showQuestion() {
+    const questionElement = document.getElementById("question");
+    const answersElement = document.querySelector(".answers");
+
+    // Обновляем текст вопроса
+    questionElement.innerText = questions[currentQuestion].text;
+
+    // Обновляем ответы
+    answersElement.innerHTML = ""; // Очищаем предыдущие кнопки
+    questions[currentQuestion].answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerText = answer.text;
+        button.onclick = () => answer(answer.points);
+        answersElement.appendChild(button);
+    });
 }
 
-// Инициализация
+// Функция для отображения результата
+function showResult() {
+    document.getElementById("quiz").style.display = "none";
+
+    let resultText = "";
+    if (score >= 8) {
+        resultText = "Вы очень позитивный человек! Сохраняйте этот настрой.";
+    } else if (score >= 4) {
+        resultText = "У вас сбалансированный подход к жизни, но иногда можно добавить больше позитива.";
+    } else {
+        resultText = "Вы склонны к депрессивным настроениям. Попробуйте сосредотачиваться на радостных моментах.";
+    }
+
+    document.getElementById("result").innerText = resultText;
+}
+
+// Показываем первый вопрос при загрузке страницы
 showQuestion();
