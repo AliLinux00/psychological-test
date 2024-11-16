@@ -41,6 +41,18 @@ h1 {
 }
 
 #result {
-    margin-top: 20px;
+width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #4CAF50; /* Зеленый фон для результата */
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     font-size: 18px;
+}
+
+.hidden {
+    display: none;
 }
