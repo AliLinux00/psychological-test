@@ -7,6 +7,13 @@ body {
     text-align: center;
 }
 
+h1 {
+    font-size: 24px;
+    color: #f4f4f4;
+    text-align: center;
+    margin-top: 20px;
+}
+
 #quiz {
     margin: 50px auto;
     padding: 20px;
