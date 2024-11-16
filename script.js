@@ -52,12 +52,16 @@ let score = 0;
 function answer(points) {
     score += points;
     currentQuestion++;
+
     if (currentQuestion < questions.length) {
-        showQuestion();
+        showQuestion(); // Переход к следующему вопросу
     } else {
-        showResult();
+        // Когда вопросы закончены, скрываем блок с вопросами и показываем кнопку для отображения результата
+        document.getElementById("quiz").style.display = "none"; // Скрыть блок с вопросами
+        document.getElementById("result").classList.remove("hidden"); // Показать кнопку "Узнать ответы"
     }
 }
+
 
 function showQuestion() {
     document.getElementById("question").textContent = questions[currentQuestion];
@@ -77,8 +81,8 @@ function showResult() {
         : score >= 6
         ? "Вы спокойный и уравновешенный, но иногда вам стоит быть более активным."
         : "Вы чувствуете усталость и стресс. Подумайте о том, чтобы больше отдыхать и искать радость в мелочах.";
-    document.getElementById("quiz").style.display = "none";
-    document.getElementById("result").textContent = resultText;
+
+    document.getElementById("result-text").textContent = resultText; // Показать результат
 }
 
 showQuestion();
