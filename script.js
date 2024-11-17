@@ -120,6 +120,24 @@ function displayFinalResult() {
     document.getElementById("show-answer-btn").classList.add("hidden");
 }
 
+// Функция для отображения сообщения в конце теста
+function displayShareMessage() {
+    // Скрываем все элементы, которые не должны отображаться в процессе теста
+    document.getElementById('share-message').classList.remove('hidden');
+    document.getElementById('show-answer-btn').classList.remove('hidden');
+}
+
+// Пример завершения теста
+function endQuiz() {
+    // Ваш код для подсчета результатов или окончания теста
+    // После этого показываем сообщение и кнопки
+    displayShareMessage();
+}
+
+// Пример кнопки для завершения теста
+document.getElementById('show-answer-btn').addEventListener('click', endQuiz);
+
+
 // Показ первого вопроса
 showQuestion();
 
