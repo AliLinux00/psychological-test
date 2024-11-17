@@ -50,17 +50,50 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    text-align: center;
 }
 
 .answers button:hover {
     background-color: #45a049;
-    transform: scale(1.03); /* Небольшое увеличение при наведении */
+    transform: scale(1.03);
 }
 
-/* Блок результата */
+
+/* Скрытие блоков по умолчанию */
 .hidden {
     display: none;
 }
+
+/* Стили для блока с сообщением "Отправьте 10 друзьям" */
+#share-message {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    background-color: #333; /* Темный фон */
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#share-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#share-button:hover {
+    background-color: #45a049;
+}
+
 
 .result-text {
     font-family: 'Arial', sans-serif;
