@@ -19,17 +19,21 @@
     </div>
 
     <!-- Блок промежуточного результата -->
-    <div id="result" class="hidden">
-        <p id="result-text"></p>
-        <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
-        <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать результат</button>
-    </div>
+<div id="result" class="hidden">
+    <p id="result-text">Чтобы узнать ответ, отправьте 10 друзьям!</p>
+    <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
+    <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать результат</button>
+</div>
 
-    <!-- Блок с финальным результатом -->
-    <div id="final-result" class="hidden">
-        <p id="final-result-text"></p>
-    </div>
+<!-- Блок с финальным результатом -->
+<div id="final-result" class="hidden">
+    <p id="final-result-text"></p>
+</div>
 
-    <script src="script.js"></script>
+<!-- Кнопка перехода в Telegram -->
+<div id="telegram-button" class="hidden">
+    <button onclick="redirectToTelegram()">Перейти в наш Telegram-канал</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
