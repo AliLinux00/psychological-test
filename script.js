@@ -96,7 +96,7 @@ function shareOnWhatsApp() {
         if (showAnswerBtn) {
             showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать результат"
         }
-    }, 50000);
+    }, 20000);
 }
 
 function displayFinalResult() {
