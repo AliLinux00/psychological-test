@@ -58,10 +58,10 @@ function showQuestion() {
             btn.onclick = () => answer(answers[currentQuestion][index].points);
         });
     } else {
+        // Показываем сообщение только после последнего вопроса
         showResult();
     }
 }
-
 function answer(points) {
     score += points;
     currentQuestion++;
@@ -90,7 +90,6 @@ function shareOnWhatsApp() {
         showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать результат"
     }, 20000);
 }
-
 
 function displayFinalResult() {
     const finalResult = document.getElementById("final-result");
