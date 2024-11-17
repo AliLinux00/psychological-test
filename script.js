@@ -71,39 +71,31 @@ function answer(points) {
 function showResult() {
     const quiz = document.getElementById("quiz");
     const result = document.getElementById("result");
-    const message = document.getElementById("message");
 
-    quiz.style.display = "none"; // Скрыть вопросы
-    result.classList.remove("hidden"); // Показать результат с кнопкой
-    message.classList.remove("hidden"); // Показать сообщение "Отправьте 10 друзьям"
+    // Скрыть блок вопросов
+    quiz.style.display = "none";
+
+    // Показать блок результата с кнопкой WhatsApp
+    result.classList.remove("hidden");
 }
 
 function shareOnWhatsApp() {
     const messageText = "Пройди интересный психологический тест, и узнай какой ты человек! https://example.com";
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
-
-    // Открыть WhatsApp для отправки сообщения
     window.open(whatsappURL, "_blank");
 
-    // Начать таймер на 50 секунд
-    const message = document.getElementById("message");
+    // Запустить таймер на 20 секунд
     const showAnswerBtn = document.getElementById("show-answer-btn");
-
     setTimeout(() => {
-        if (message) {
-            message.classList.add("hidden"); // Скрыть сообщение
-        }
-        if (showAnswerBtn) {
-            showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать результат"
-        }
+        showAnswerBtn.classList.remove("hidden"); // Показать кнопку "Узнать результат"
     }, 20000);
 }
+
 
 function displayFinalResult() {
     const finalResult = document.getElementById("final-result");
     const telegramButton = document.getElementById("telegram-button");
 
-    // Установка текста финального результата (пример, зависит от логики подсчета очков)
     const finalText =
         score >= 12
             ? "Вы — Вы — активная личность. Вы полны энергии, всегда стремитесь к действию и легко беретесь за новые проекты. Вам нравится быть в центре событий, и вы не боитесь рисковать, чтобы достичь своих целей. Вам важно двигаться вперед, и вы не терпите застоя. У вас всегда есть план, и вы быстро адаптируетесь к изменениям. Ваша энергия и энтузиазм могут вдохновить окружающих, и вы часто становитесь лидером, задающим тон всему коллективу."
