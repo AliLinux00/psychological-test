@@ -11,7 +11,7 @@
     
     <!-- Блок с вопросами -->
     <div id="quiz">
-        <div id="question">Как вы начинаете утро?</div>
+        <div class="question" id="question">Как вы начинаете утро?</div>
         <div class="answers">
             <button onclick="selectAnswer(1)">Ответ 1</button>
             <button onclick="selectAnswer(2)">Ответ 2</button>
@@ -19,20 +19,21 @@
         </div>
     </div>
 
-    <!-- Результат -->
+    <!-- Блок промежуточного результата -->
     <div id="result" class="hidden">
         <p id="result-text">Чтобы узнать ответ, отправьте 10 друзьям!</p>
         <button id="share-button" onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
         <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать результат</button>
     </div>
 
+    <!-- Блок с финальным результатом -->
     <div id="final-result" class="hidden">
         <p id="final-result-text"></p>
     </div>
 
-    <div id="share-message" class="hidden">
-        <p>Отправьте тест 10 друзьям, чтобы узнать результат!</p>
-        <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
+    <!-- Кнопка перехода в Telegram -->
+    <div id="telegram-button" class="hidden">
+        <button onclick="redirectToTelegram()">Перейти в наш Telegram-канал</button>
     </div>
 
     <script src="script.js"></script>
