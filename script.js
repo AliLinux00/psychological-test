@@ -58,10 +58,10 @@ function showQuestion() {
             btn.onclick = () => answer(answers[currentQuestion][index].points);
         });
     } else {
-        // Показываем сообщение только после последнего вопроса
         showResult();
     }
 }
+
 function answer(points) {
     score += points;
     currentQuestion++;
@@ -72,53 +72,43 @@ function showResult() {
     const quiz = document.getElementById("quiz");
     const result = document.getElementById("result");
 
-    // Скрыть блок вопросов
-    quiz.style.display = "none";
-
-    // Показать блок результата с кнопкой WhatsApp
-    result.classList.remove("hidden");
+    quiz.style.display = "none";  // Скрыть блок вопросов
+    result.classList.remove("hidden");  // Показать блок результата
 }
 
-// Функция для отправки сообщения через WhatsApp
-// Функция для отправки сообщения через WhatsApp
 function shareOnWhatsApp() {
-    const messageText =
-        "Пройди интересный психологический тест, и узнай какой ты человек! https://example.com";
+    const messageText = "Пройди интересный психологический тест, и узнай какой ты человек! https://example.com";
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
     window.open(whatsappURL, "_blank");
 
     // Показать кнопку "Узнать результат" через 20 секунд
-    const showAnswerBtn = document.getElementById("show-answer-btn");
-
-    if (showAnswerBtn.classList.contains("hidden")) {
-        setTimeout(() => {
-            showAnswerBtn.classList.remove("hidden"); // Показать кнопку
-        }, 20000);
-    }
+    setTimeout(() => {
+        const showAnswerBtn = document.getElementById("show-answer-btn");
+        if (showAnswerBtn.classList.contains("hidden")) {
+            showAnswerBtn.classList.remove("hidden");
+        }
+    }, 20000);
 }
 
-// Функция для отображения финального результата
 function displayFinalResult() {
     const finalResult = document.getElementById("final-result");
     const telegramButton = document.getElementById("telegram-button");
 
     if (finalResult.classList.contains("hidden")) {
-        const score = 10; // Замените на реальную логику подсчета баллов
         const finalText =
             score >= 12
                 ? "Вы — активная личность. Вы полны энергии, всегда стремитесь к действию..."
                 : score >= 6
                 ? "Вы — уравновешенная личность. Вам присуща внутренняя гармония..."
                 : "Вы — стрессовая личность. Вы склонны переживать и тревожиться...";
-        document.getElementById("final-result-text").textContent = finalText;
 
-        finalResult.classList.remove("hidden"); // Показать результат
-        telegramButton.classList.remove("hidden"); // Показать кнопку Telegram
-        document.getElementById("show-answer-btn").classList.add("hidden"); // Скрыть кнопку
+        document.getElementById("final-result-text").textContent = finalText;
+        finalResult.classList.remove("hidden");
+        telegramButton.classList.remove("hidden");
+        document.getElementById("show-answer-btn").classList.add("hidden");
     }
 }
 
-// Убедитесь, что все скрытые элементы остаются невидимыми при загрузке страницы
 window.onload = function () {
     const hiddenElements = [
         document.getElementById("result"),
@@ -134,25 +124,19 @@ window.onload = function () {
     });
 };
 
-
 // Функция для отображения сообщения в конце теста
 function displayShareMessage() {
-    // Скрываем все элементы, которые не должны отображаться в процессе теста
+    // Скрыть все элементы, которые не должны отображаться в процессе теста
     document.getElementById('share-message').classList.remove('hidden');
     document.getElementById('show-answer-btn').classList.remove('hidden');
 }
 
 // Пример завершения теста
 function endQuiz() {
-    // Ваш код для подсчета результатов или окончания теста
-    // После этого показываем сообщение и кнопки
     displayShareMessage();
 }
 
-// Пример кнопки для завершения теста
 document.getElementById('show-answer-btn').addEventListener('click', endQuiz);
-
 
 // Показ первого вопроса
 showQuestion();
-
