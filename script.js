@@ -80,17 +80,21 @@ function showResult() {
 }
 
 // Функция для отправки сообщения через WhatsApp
+// Функция для отправки сообщения через WhatsApp
 function shareOnWhatsApp() {
     const messageText =
         "Пройди интересный психологический тест, и узнай какой ты человек! https://example.com";
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
     window.open(whatsappURL, "_blank");
 
-    // Таймер: показать кнопку "Узнать результат" через 20 секунд
+    // Показать кнопку "Узнать результат" через 20 секунд
     const showAnswerBtn = document.getElementById("show-answer-btn");
-    setTimeout(() => {
-        showAnswerBtn.classList.remove("hidden"); // Показать кнопку
-    }, 20000);
+
+    if (showAnswerBtn.classList.contains("hidden")) {
+        setTimeout(() => {
+            showAnswerBtn.classList.remove("hidden"); // Показать кнопку
+        }, 20000);
+    }
 }
 
 // Функция для отображения финального результата
@@ -98,23 +102,37 @@ function displayFinalResult() {
     const finalResult = document.getElementById("final-result");
     const telegramButton = document.getElementById("telegram-button");
 
-    // Определяем текст результата (пример с баллами)
-    const score = 10; // Замените на реальную логику подсчета баллов
-    const finalText =
-        score >= 12
-            ? "Вы — активная личность. Вы полны энергии, всегда стремитесь к действию и легко беретесь за новые проекты. Вам нравится быть в центре событий, и вы не боитесь рисковать, чтобы достичь своих целей. Вам важно двигаться вперед, и вы не терпите застоя. У вас всегда есть план, и вы быстро адаптируетесь к изменениям. Ваша энергия и энтузиазм могут вдохновить окружающих, и вы часто становитесь лидером, задающим тон всему коллективу."
-            : score >= 6
-            ? "Вы — уравновешенная личность. Вам присуща внутренняя гармония, и вы стараетесь сохранять спокойствие в любой ситуации. Вы принимаете обдуманные решения и не склонны к импульсивным поступкам. Ваша рассудительность и стабильность помогают вам справляться с рутинными задачами и не терять контроль в стрессовых ситуациях. Вы цените стабильность и предпочитаете избегать резких перемен, благодаря чему люди рядом с вами чувствуют себя уверенно и в безопасности."
-            : "Вы — стрессовая личность. Вы склонны переживать и тревожиться, особенно в ситуациях неопределенности или давления. Часто вы чувствуете, что не можете контролировать происходящее, и это вызывает у вас беспокойство. Хотя ваша внимательность к деталям и стремление избежать ошибок — ваши сильные стороны, порой они могут приводить к излишней нервозности. Постарайтесь уделять внимание техникам расслабления и управлению стрессом, таким как дыхательные упражнения или медитация.";
-    document.getElementById("final-result-text").textContent = finalText;
+    if (finalResult.classList.contains("hidden")) {
+        const score = 10; // Замените на реальную логику подсчета баллов
+        const finalText =
+            score >= 12
+                ? "Вы — активная личность. Вы полны энергии, всегда стремитесь к действию..."
+                : score >= 6
+                ? "Вы — уравновешенная личность. Вам присуща внутренняя гармония..."
+                : "Вы — стрессовая личность. Вы склонны переживать и тревожиться...";
+        document.getElementById("final-result-text").textContent = finalText;
 
-    // Показать финальный результат и кнопку Telegram
-    finalResult.classList.remove("hidden");
-    telegramButton.classList.remove("hidden");
-
-    // Скрыть кнопку "Узнать результат"
-    document.getElementById("show-answer-btn").classList.add("hidden");
+        finalResult.classList.remove("hidden"); // Показать результат
+        telegramButton.classList.remove("hidden"); // Показать кнопку Telegram
+        document.getElementById("show-answer-btn").classList.add("hidden"); // Скрыть кнопку
+    }
 }
+
+// Убедитесь, что все скрытые элементы остаются невидимыми при загрузке страницы
+window.onload = function () {
+    const hiddenElements = [
+        document.getElementById("result"),
+        document.getElementById("show-answer-btn"),
+        document.getElementById("final-result"),
+        document.getElementById("telegram-button"),
+    ];
+
+    hiddenElements.forEach((el) => {
+        if (el) {
+            el.classList.add("hidden");
+        }
+    });
+};
 
 
 // Функция для отображения сообщения в конце теста
