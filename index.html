@@ -9,12 +9,13 @@
 <body>
     <h1>Психологический тест</h1>
 
+    <!-- Блок с вопросами -->
     <div id="quiz">
         <div class="question" id="question">Как вы начинаете утро?</div>
         <div class="answers">
-            <button aria-label="Ответ 1">Ответ 1</button>
-            <button aria-label="Ответ 2">Ответ 2</button>
-            <button aria-label="Ответ 3">Ответ 3</button>
+            <button aria-label="Ответ 1" class="answer-button" data-answer="A">Ответ 1</button>
+            <button aria-label="Ответ 2" class="answer-button" data-answer="B">Ответ 2</button>
+            <button aria-label="Ответ 3" class="answer-button" data-answer="C">Ответ 3</button>
         </div>
     </div>
 
@@ -43,78 +44,71 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            let score = 0;
+            let questionIndex = 0;
+            const answers = [
+                { question: "Как вы начинаете утро?", answers: ["A", "B", "C"] },  // Пример с вопросом и ответами
+                // Добавь остальные вопросы и их ответы аналогично
+            ];
 
+            // Функция для обновления вопроса и ответов
+            function updateQuestion() {
+                const questionData = answers[questionIndex];
+                document.getElementById("question").textContent = questionData.question;
+                const answerButtons = document.querySelectorAll(".answer-button");
+
+                answerButtons.forEach((button, index) => {
+                    button.textContent = `Ответ ${index + 1}`;
+                    button.addEventListener("click", handleAnswer);
+                });
+            }
+
+            // Функция для обработки выбора ответа
+            function handleAnswer(event) {
+                const selectedAnswer = event.target.dataset.answer;
+                if (selectedAnswer === "A") score += 2;
+                if (selectedAnswer === "B") score += 1;
+                if (selectedAnswer === "C") score += 0;
+
+                questionIndex++;
+                if (questionIndex < answers.length) {
+                    updateQuestion();
+                } else {
+                    document.getElementById("quiz").classList.add("hidden");
+                    document.getElementById("result").classList.remove("hidden");
+                    setTimeout(() => {
+                        document.getElementById("share-message").classList.remove("hidden");
+                    }, 20000);  // Таймер на 20 секунд
+                }
+            }
+
+            // Функция для отображения результата
+            function displayFinalResult() {
+                let resultText = '';
+                if (score >= 12) {
+                    resultText = "Вы активный человек!";
+                } else if (score >= 6) {
+                    resultText = "Вы спокойный человек.";
+                } else {
+                    resultText = "Вы немного стрессовый.";
+                }
+
+                document.getElementById("final-result-text").textContent = resultText;
+                document.getElementById("final-result").classList.remove("hidden");
+                document.getElementById("telegram-button").classList.remove("hidden");
+                document.getElementById("show-answer-btn").classList.add("hidden");
+            }
+
+            // Функция для совместного использования в WhatsApp
             function shareOnWhatsApp() {
                 const messageText = "Пройди интересный психологический тест, и узнай какой ты человек! https://example.com";
                 const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
                 window.open(whatsappURL, "_blank");
-
-                // Запуск таймера на 20 секунд
-                setTimeout(() => {
-                    console.log('Показываю кнопку "Поделиться"');
-                    document.getElementById("share-message").classList.remove("hidden");
-                }, 20000);
             }
 
-            function displayFinalResult() {
-                const finalResult = document.getElementById("final-result");
-                const telegramButton = document.getElementById("telegram-button");
-
-                // Текст финального результата
-                let resultText;
-                const score = calculateScore();
-
-                if (score >= 12) {
-                    resultText = "Ты активный человек!";
-                } else if (score >= 6) {
-                    resultText = "Ты спокойный человек.";
-                } else {
-                    resultText = "Ты немного стрессовый человек.";
-                }
-
-                document.getElementById("final-result-text").textContent = resultText;
-
-                // Показываем финальный результат и кнопку Telegram
-                finalResult.classList.remove("hidden");
-                telegramButton.classList.remove("hidden");
-
-                // Скрыть кнопку "Узнать результат"
-                document.getElementById("show-answer-btn").classList.add("hidden");
-            }
-
-            function calculateScore() {
-                const answers = document.querySelectorAll(".answers button");
-                let score = 0;
-
-                answers.forEach(button => {
-                    button.addEventListener("click", function() {
-                        switch (button.textContent) {
-                            case 'Ответ 1':
-                                score += 2;
-                                break;
-                            case 'Ответ 2':
-                                score += 1;
-                                break;
-                            case 'Ответ 3':
-                                score += 0;
-                                break;
-                        }
-                    });
-                });
-
-                return score;
-            }
-
-            // Подключаем обработчики
-            const shareButton = document.getElementById("share-button");
-            shareButton.addEventListener("click", shareOnWhatsApp);
-
+            // Запуск теста
+            updateQuestion();
         });
-
-        function redirectToTelegram() {
-            window.location.href = "https://t.me/your_channel_link";
-        }
-
     </script>
 </body>
 </html>
