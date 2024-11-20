@@ -33,6 +33,76 @@
         <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const questions = [
+            { 
+                question: "Как вы начинаете утро?",
+                answers: ["С радостью и энергией", "Спокойно, без лишней суеты", "С трудом и раздражением"],
+                points: [2, 1, 0]
+            },
+            // Добавьте сюда остальные вопросы по аналогии
+        ];
+
+        // Функция для отображения следующего вопроса
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const question = questions[currentQuestionIndex];
+                document.getElementById('question').textContent = question.question;
+                const buttons = document.querySelectorAll('.answers button');
+                buttons.forEach((button, index) => {
+                    button.textContent = question.answers[index];
+                    button.onclick = () => selectAnswer(question.points[index]);
+                });
+            } else {
+                document.getElementById('quiz').style.display = 'none';
+                document.getElementById('result').classList.remove('hidden');
+            }
+        }
+
+        // Функция для обработки выбора ответа
+        function selectAnswer(points) {
+            score += points;
+            currentQuestionIndex++;
+            nextQuestion();
+        }
+
+        // Функция для отображения финального результата
+        function displayFinalResult() {
+            const resultText = getFinalResultText(score);
+            document.getElementById('final-result-text').textContent = resultText;
+            document.getElementById('final-result').classList.remove('hidden');
+            document.getElementById('show-answer-btn').classList.add('hidden');
+            document.getElementById('telegram-button').classList.remove('hidden');
+        }
+
+        // Функция для возвращения текста в зависимости от баллов
+        function getFinalResultText(score) {
+            if (score >= 12) {
+                return "Вы активный и энергичный человек!";
+            } else if (score >= 6) {
+                return "Вы спокойный и уравновешенный.";
+            } else {
+                return "Вы немного стрессовый человек, возможно, вам стоит расслабиться.";
+            }
+        }
+
+        // Функция для поделиться в WhatsApp
+        function shareOnWhatsApp() {
+            const messageText = "Пройди интересный психологический тест и узнай, какой ты человек! https://example.com";
+            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
+            window.open(whatsappURL, "_blank");
+
+            setTimeout(() => {
+                document.getElementById("share-message").classList.remove("hidden");
+            }, 20000);
+        }
+
+        // Инициализация теста при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            nextQuestion();
+        });
+    </script>
 </body>
 </html>
