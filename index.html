@@ -22,7 +22,7 @@
     <!-- Этот блок скрывается вначале -->
     <div id="result" class="hidden">
         <p>Чтобы узнать ответ, отправьте 10 друзьям!</p>
-        <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
+        <button id="share-button">Поделиться в WhatsApp</button>
         <button id="show-answer-btn" class="hidden" onclick="showResult()">Узнать результат</button>
     </div>
 
@@ -35,9 +35,10 @@
         let score = 0;
         let questionIndex = 0;
 
+        // Массив вопросов и возможных вариантов
         const answers = [
             { question: "Как вы начинаете утро?", options: ["A", "B", "C"] },
-            // Добавьте другие вопросы и ответы
+            // Добавьте другие вопросы и ответы здесь
         ];
 
         const resultText = {
@@ -46,7 +47,7 @@
             stressed: "Вы немного стрессовый."
         };
 
-        // Обновляем вопрос
+        // Функция обновления вопроса
         function updateQuestion() {
             const questionData = answers[questionIndex];
             document.getElementById("question").textContent = questionData.question;
@@ -57,7 +58,7 @@
             });
         }
 
-        // Обрабатываем ответ
+        // Обработка ответа на вопрос
         function handleAnswer(answer) {
             if (answer === "A") score += 2;
             if (answer === "B") score += 1;
@@ -67,33 +68,49 @@
             if (questionIndex < answers.length) {
                 updateQuestion();
             } else {
+                // Когда все вопросы пройдены, скрываем вопросы и показываем результаты
                 document.getElementById("quiz").classList.add("hidden");
                 document.getElementById("result").classList.remove("hidden");
+
+                // Запускаем таймер через 20 секунд
                 setTimeout(() => {
                     document.getElementById("timer-message").classList.remove("hidden");
-                }, 20000); // Появление через 20 секунд
+                }, 20000); // Появляется через 20 секунд
             }
         }
 
-        // Функция для отображения результата
+        // Показываем финальный результат
         function showResult() {
             let result = "";
             if (score >= 12) result = resultText.active;
             else if (score >= 6) result = resultText.calm;
             else result = resultText.stressed;
 
-            document.getElementById("show-answer-btn").classList.add("hidden");
+            // Отображаем результат
             document.getElementById("result").innerHTML = result;
+
+            // Убираем кнопку "Узнать результат"
+            document.getElementById("show-answer-btn").classList.add("hidden");
+
+            // Кнопка для перехода в Telegram-канал
+            const telegramLink = "<a href='https://t.me/yourchannel' target='_blank'>Перейти в наш телеграм-канал</a>";
+            document.getElementById("result").innerHTML += telegramLink;
         }
 
-        // Функция для отправки на WhatsApp
+        // Функция для отправки сообщения в WhatsApp
         function shareOnWhatsApp() {
             const message = "Пройди психологический тест и узнай, какой ты человек!";
             const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
             window.open(url, "_blank");
+
+            // Показываем кнопку "Узнать результат" после 20 секунд
+            setTimeout(() => {
+                document.getElementById("show-answer-btn").classList.remove("hidden");
+            }, 20000);
         }
 
         // Инициализация
+        document.getElementById("share-button").onclick = shareOnWhatsApp;
         updateQuestion();
     </script>
 </body>
