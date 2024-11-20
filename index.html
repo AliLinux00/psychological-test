@@ -36,8 +36,15 @@
         let questionIndex = 0;
 
         // Массив вопросов и возможных вариантов
-        const answers = [
-            { question: "Как вы начинаете утро?", options: ["A", "B", "C"] },
+        const questions = [
+            {
+                question: "Как вы начинаете утро?",
+                answers: [
+                    { text: "Встаю рано и начинаю день с зарядки", value: "A" },
+                    { text: "Просыпаюсь, медленно завтрак, планирую день", value: "B" },
+                    { text: "Сильно опаздываю и начинаю торопиться", value: "C" }
+                ]
+            },
             // Добавьте другие вопросы и ответы здесь
         ];
 
@@ -49,12 +56,14 @@
 
         // Функция обновления вопроса
         function updateQuestion() {
-            const questionData = answers[questionIndex];
+            const questionData = questions[questionIndex];
             document.getElementById("question").textContent = questionData.question;
+
             const answerButtons = document.querySelectorAll(".answer-button");
             answerButtons.forEach((button, index) => {
-                button.textContent = `Ответ ${index + 1}`;
-                button.onclick = () => handleAnswer(questionData.options[index]);
+                const answer = questionData.answers[index];
+                button.textContent = answer.text;
+                button.onclick = () => handleAnswer(answer.value);
             });
         }
 
@@ -65,7 +74,7 @@
             if (answer === "C") score += 0;
 
             questionIndex++;
-            if (questionIndex < answers.length) {
+            if (questionIndex < questions.length) {
                 updateQuestion();
             } else {
                 // Когда все вопросы пройдены, скрываем вопросы и показываем результаты
