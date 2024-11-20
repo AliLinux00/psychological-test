@@ -61,9 +61,18 @@
                 const telegramButton = document.getElementById("telegram-button");
 
                 // Текст финального результата
-                const finalText = "Ваш результат здесь...";
+                let resultText;
+                const score = calculateScore();
 
-                document.getElementById("final-result-text").textContent = finalText;
+                if (score >= 12) {
+                    resultText = "Ты активный человек!";
+                } else if (score >= 6) {
+                    resultText = "Ты спокойный человек.";
+                } else {
+                    resultText = "Ты немного стрессовый человек.";
+                }
+
+                document.getElementById("final-result-text").textContent = resultText;
 
                 // Показываем финальный результат и кнопку Telegram
                 finalResult.classList.remove("hidden");
@@ -73,11 +82,39 @@
                 document.getElementById("show-answer-btn").classList.add("hidden");
             }
 
+            function calculateScore() {
+                const answers = document.querySelectorAll(".answers button");
+                let score = 0;
+
+                answers.forEach(button => {
+                    button.addEventListener("click", function() {
+                        switch (button.textContent) {
+                            case 'Ответ 1':
+                                score += 2;
+                                break;
+                            case 'Ответ 2':
+                                score += 1;
+                                break;
+                            case 'Ответ 3':
+                                score += 0;
+                                break;
+                        }
+                    });
+                });
+
+                return score;
+            }
+
             // Подключаем обработчики
             const shareButton = document.getElementById("share-button");
             shareButton.addEventListener("click", shareOnWhatsApp);
 
         });
+
+        function redirectToTelegram() {
+            window.location.href = "https://t.me/your_channel_link";
+        }
+
     </script>
 </body>
 </html>
