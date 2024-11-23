@@ -75,7 +75,7 @@ function answer(points) {
 
 function showResult() {
     document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
-    document.getElementById("finalResultText").classList.remove("visible"); // Показать результат
+    document.getElementById("result").classList.remove("hidden"); // Показать результат
 
     const finalResultText = document.getElementById("final-result-text");
     finalResultText.textContent =
