@@ -11,6 +11,41 @@ body {
     min-height: 100vh; /* Обеспечивает корректное отображение на больших экранах */
 }
 
+/* Стили для полоски */
+#top-bar {
+    width: 100%;
+    height: 50px; /* Высота полоски */
+    background-color: #4CAF50; /* Цвет фона */
+    color: white; /* Цвет текста */
+    display: flex; /* Для выравнивания содержимого */
+    align-items: center; /* По вертикали */
+    justify-content: space-between; /* Между элементами */
+    position: fixed; /* Фиксируем вверху страницы */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Чтобы перекрывать другие элементы */
+    padding: 0 20px; /* Отступы внутри полоски */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+/* Ссылки в полоске */
+#top-bar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+#top-bar a:hover {
+    text-decoration: underline;
+}
+
+#content {
+    margin-top: 60px; /* Отступ, чтобы полоска не перекрывала контент */
+    padding: 20px;
+}
+
+
 /* Заголовок */
 .title {
     margin-top: 20px;
