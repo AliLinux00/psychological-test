@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,23 +16,15 @@
             <button onclick="answer(0)">С трудом и раздражением</button>
         </div>
     </div>
-<div id="result" class="result hidden">
-    <p id="result-text"></p>
-    <button onclick="showResult()">Узнать ответы</button>
-    
-    <!-- Новые элементы -->
-    <div id="message" class="hidden">
-        <p>Отправьте 10 друзьям, чтобы узнать ответ!</p>
+    <div id="result" class="result hidden">
+        <p id="message">Отправьте 10 друзьям, чтобы узнать свой ответ!</p>
         <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
     </div>
-    
-    <!-- Контейнер для результата, который будет показываться через 50 секунд -->
     <div id="final-result" class="hidden">
         <p id="final-result-text"></p>
+        <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать ответы</button>
     </div>
-</div>
-
-
     <script src="script.js"></script>
 </body>
 </html>
+
