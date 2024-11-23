@@ -43,6 +43,10 @@ body {
     display: none;
 }
 
+.visible {
+    display: block; /* Или другой подходящий стиль, например, inline-block */
+}
+
 /* Кнопки для ответов */
 .answers button {
     width: 100%;
