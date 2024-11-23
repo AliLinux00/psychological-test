@@ -64,35 +64,15 @@ body {
     transform: scale(1.03);
 }
 
-/* Стиль для блоков, которые будут отображаться в конце теста */
-#share-message {
-    margin-top: 30px;
-    font-size: 18px;
-    color: #fff;
+/* Стиль для блока с результатами */
+#result {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование содержимого */
+    justify-content: center;
     text-align: center;
-    padding: 10px;
-    background-color: #333;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 20px;
 }
-
-#share-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Зеленый цвет */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#share-button:hover {
-    background-color: #45a049;
-}
-
 
 .result-text {
     font-family: 'Arial', sans-serif;
@@ -122,39 +102,7 @@ body {
     transform: translateY(0); /* Плавное появление */
 }
 
-/* Блок финального результата */
-/* Кнопка для WhatsApp */
-.answers button {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 10px 0;
-    background-color: #4CAF50; /* Зеленый цвет */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: block;
-    text-align: center; /* Центрирование текста */
-}
-
-.answers button:hover {
-    background-color: #45a049;
-    transform: scale(1.03); /* Небольшое увеличение при наведении */
-}
-
-/* Блок с результатами */
-#result {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрирование содержимого */
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Кнопка для перехода к результатам */
+/* Кнопка перехода к результатам */
 #show-answer-btn {
     margin-top: 20px; /* Расстояние между кнопками */
 }
@@ -173,8 +121,37 @@ body {
     animation: fadeInUp 0.8s ease-out;
 }
 
-/* Кнопка перехода в Telegram */
-#telegram-button button {
+/* Блок для кнопок "Поделиться" */
+#share-message {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#share-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#share-button:hover {
+    background-color: #45a049;
+}
+
+/* Кнопка для Telegram */
+#telegram-button {
     margin-top: 15px;
     padding: 12px 20px;
     background-color: #0088cc; /* Синий цвет Telegram */
@@ -186,8 +163,26 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#telegram-button button:hover {
+#telegram-button:hover {
     background-color: #006699;
+    transform: scale(1.05);
+}
+
+/* Кнопка для WhatsApp */
+#whatsapp-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #25D366; /* Зеленый цвет WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#whatsapp-button:hover {
+    background-color: #1DA154;
     transform: scale(1.05);
 }
 
