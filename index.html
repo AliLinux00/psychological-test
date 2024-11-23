@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Психологический тест</title>
+    <title>Тест с результатами</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="title">Психологический тест</h1>
     <div id="quiz">
-        <div class="question" id="question">Как вы начинаете утро?</div>
+        <h2 id="question">Вопрос</h2>
         <div class="answers">
-            <button onclick="answer(2)">С радостью и энергией</button>
-            <button onclick="answer(1)">Спокойно, без лишней суеты</button>
-            <button onclick="answer(0)">С трудом и раздражением</button>
+            <button class="answer-btn">Ответ 1</button>
+            <button class="answer-btn">Ответ 2</button>
+            <button class="answer-btn">Ответ 3</button>
         </div>
     </div>
-    <div id="result" class="result hidden">
-        <p id="message">Отправьте 10 друзьям, чтобы узнать свой ответ!</p>
-        <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
+    <div id="result" class="hidden">
+        <h2>Результат</h2>
+        <p id="final-result-text">Ваш результат...</p>
+        <button id="telegram-button" class="hidden" onclick="shareOnTelegram()">Поделиться в Telegram</button>
     </div>
-    <div id="final-result" class="hidden">
-        <p id="final-result-text"></p>
-        <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать ответы</button>
+    <div id="share-message" class="hidden">
+        <p>Отправь это сообщение 10 друзьям:</p>
+        <button id="whatsapp-button" onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
