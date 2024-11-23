@@ -75,7 +75,7 @@ function answer(points) {
 
 function showResult() {
     document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
-    document.getElementById("result").classList.remove("hidden"); // Показать результат
+    document.getElementById("finalResultText").classList.remove("hidden"); // Показать результат
 
     const finalResultText = document.getElementById("final-result-text");
     finalResultText.textContent =
@@ -93,17 +93,11 @@ function displayShareMessage() {
 
 // Функция для WhatsApp
 function shareOnWhatsApp() {
-    const message = "Пройди этот тест и узнай о себе больше! https://example.com";
+    const message = "Пройди этот тест и у знай какой ты человек! https://example.com";
     const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 }
 
-// Функция для Telegram
-function shareOnTelegram() {
-    const message = "Пройди этот тест и узнай о себе больше! https://example.com";
-    const url = `https://t.me/share/url?url=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
 
 // Показ первого вопроса
 showQuestion();
