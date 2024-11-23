@@ -4,81 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тест с результатами</title>
-    <style>
-        .hidden {
-            display: none;
-        }
-        #result {
-            text-align: center;
-            margin: 20px auto;
-        }
-        #whatsapp-button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #whatsapp-button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="quiz">
         <h2 id="question">Вопрос</h2>
         <div class="answers">
-            <button class="answer-btn" onclick="selectAnswer()">Ответ 1</button>
-            <button class="answer-btn" onclick="selectAnswer()">Ответ 2</button>
-            <button class="answer-btn" onclick="selectAnswer()">Ответ 3</button>
+            <button class="answer-btn">Ответ 1</button>
+            <button class="answer-btn">Ответ 2</button>
+            <button class="answer-btn">Ответ 3</button>
         </div>
     </div>
-
-    <div id="result" class="hidden">
-        <p id="final-result-text"></p>
-        <button id="whatsapp-button" class="hidden" onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
+<div id="result" class="hidden">
+    <p id="final-result-text"></p>
+    <div id="share-message">
+        <p>Отправь 10 друзьям, чтобы узнать свои результаты:</p>
+        <button id="whatsapp-button" onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
     </div>
-
-    <script>
-        let currentQuestion = 0;
-        let score = 0;
-
-        function selectAnswer() {
-            // Пример логики — увеличиваем счетчик вопросов
-            currentQuestion++;
-            if (currentQuestion >= 3) { // Если все вопросы пройдены
-                showResult();
-            }
-        }
-
-        function showResult() {
-            document.getElementById("quiz").style.display = "none"; // Скрываем вопросы
-            const resultBlock = document.getElementById("result");
-            const resultText = document.getElementById("final-result-text");
-            const shareButton = document.getElementById("whatsapp-button");
-
-            // Выводим результат
-            resultText.textContent = score > 2 
-                ? "Вы отличный участник! Делитесь результатом!" 
-                : "В следующий раз будет лучше!";
-            
-            // Делаем блок с результатом и кнопкой видимыми
-            resultBlock.classList.remove("hidden");
-            shareButton.classList.remove("hidden");
-        }
-
-        function shareOnWhatsApp() {
-            // Примерная ссылка для WhatsApp
-            const message = encodeURIComponent("Я прошел тест! Мой результат: отличный участник!");
-            const whatsappUrl = `https://wa.me/?text=${message}`;
-            
-            window.open(whatsappUrl, "_blank");
-
-            // Опционально, после нажатия, скрываем кнопку "Поделиться"
-            document.getElementById("whatsapp-button").classList.add("hidden");
-        }
-    </script>
+</div>
+    <script src="script.js"></script>
 </body>
 </html>
