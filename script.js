@@ -73,27 +73,6 @@ function answer(points) {
     }
 }
 
-}
-
-// Функция для WhatsApp
-function shareOnWhatsApp() {
-    const message = "Пройди этот тест и узнай о себе больше! https://example.com";
-    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
-
-
-function handleShareButtonClick() {
-    // Здесь можно добавить логику для отправки в WhatsApp, например, через API
-
-    // Запуск таймера на 20 секунд
-    setTimeout(function() {
-        // Показать результат после 20 секунд
-        showResult();
-    }, 20000); // 20000 миллисекунд = 20 секунд
-}
-
-// Функция отображения результата
 function showResult() {
     document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
     document.getElementById("result").classList.remove("hidden"); // Показать результат
@@ -106,6 +85,7 @@ function showResult() {
             ? "Вы — уравновешенная личность. Находите гармонию в жизни."
             : "Вы — стрессовая личность. Склонны к тревожности, берегите себя.";
 }
+
 function displayShareMessage() {
     document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
     document.getElementById("share-message").classList.remove("hidden"); // Показать сообщение
