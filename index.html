@@ -7,102 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Психологический тест</h1>
-    
+    <h1 class="title">Психологический тест</h1>
     <div id="quiz">
-        <div id="question">Как вы начинаете утро?</div>
+        <div class="question" id="question">Как вы начинаете утро?</div>
         <div class="answers">
-            <button onclick="selectAnswer(2)">С радостью и энергией</button>
-            <button onclick="selectAnswer(1)">Спокойно, без лишней суеты</button>
-            <button onclick="selectAnswer(0)">С трудом и раздражением</button>
+            <button onclick="answer(2)">С радостью и энергией</button>
+            <button onclick="answer(1)">Спокойно, без лишней суеты</button>
+            <button onclick="answer(0)">С трудом и раздражением</button>
         </div>
     </div>
-
-    <div id="result" class="hidden">
-        <p id="result-text">Чтобы узнать ответ, отправьте 10 друзьям!</p>
-        <button id="share-button" onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
-        <button id="show-answer-btn" class="hidden" onclick="displayFinalResult()">Узнать результат</button>
+    <div id="result" class="result hidden">
+        <p id="result-text"></p>
+        <button onclick="showResult()">Узнать ответы</button>
     </div>
 
-    <div id="final-result" class="hidden">
-        <p id="final-result-text"></p>
-    </div>
-
-    <div id="share-message" class="hidden">
-        <p>Отправьте тест 10 друзьям, чтобы узнать результат!</p>
-        <button onclick="shareOnWhatsApp()">Поделиться в WhatsApp</button>
-    </div>
-
-    <script>
-        let currentQuestionIndex = 0;
-        let score = 0;
-        const questions = [
-            { 
-                question: "Как вы начинаете утро?",
-                answers: ["С радостью и энергией", "Спокойно, без лишней суеты", "С трудом и раздражением"],
-                points: [2, 1, 0]
-            },
-            // Добавьте сюда остальные вопросы по аналогии
-        ];
-
-        // Функция для отображения следующего вопроса
-        function nextQuestion() {
-            if (currentQuestionIndex < questions.length) {
-                const question = questions[currentQuestionIndex];
-                document.getElementById('question').textContent = question.question;
-                const buttons = document.querySelectorAll('.answers button');
-                buttons.forEach((button, index) => {
-                    button.textContent = question.answers[index];
-                    button.onclick = () => selectAnswer(question.points[index]);
-                });
-            } else {
-                document.getElementById('quiz').style.display = 'none';
-                document.getElementById('result').classList.remove('hidden');
-            }
-        }
-
-        // Функция для обработки выбора ответа
-        function selectAnswer(points) {
-            score += points;
-            currentQuestionIndex++;
-            nextQuestion();
-        }
-
-        // Функция для отображения финального результата
-        function displayFinalResult() {
-            const resultText = getFinalResultText(score);
-            document.getElementById('final-result-text').textContent = resultText;
-            document.getElementById('final-result').classList.remove('hidden');
-            document.getElementById('show-answer-btn').classList.add('hidden');
-            document.getElementById('telegram-button').classList.remove('hidden');
-        }
-
-        // Функция для возвращения текста в зависимости от баллов
-        function getFinalResultText(score) {
-            if (score >= 12) {
-                return "Вы активный и энергичный человек!";
-            } else if (score >= 6) {
-                return "Вы спокойный и уравновешенный.";
-            } else {
-                return "Вы немного стрессовый человек, возможно, вам стоит расслабиться.";
-            }
-        }
-
-        // Функция для поделиться в WhatsApp
-        function shareOnWhatsApp() {
-            const messageText = "Пройди интересный психологический тест и узнай, какой ты человек! https://example.com";
-            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(messageText)}`;
-            window.open(whatsappURL, "_blank");
-
-            setTimeout(() => {
-                document.getElementById("share-message").classList.remove("hidden");
-            }, 20000);
-        }
-
-        // Инициализация теста при загрузке страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            nextQuestion();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
