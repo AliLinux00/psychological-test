@@ -96,7 +96,6 @@ body {
 
 /* Стиль для блока с результатами */
 #result {
-    #result {
     background-color: #f9f9f9; /* Цвет фона блока */
     border: 1px solid #ddd; /* Лёгкая рамка */
     border-radius: 8px; /* Скруглённые углы */
@@ -147,6 +146,8 @@ body {
 
 /* Финальный результат */
 #final-result {
+    font-size: 18px; /* Размер шрифта для результата */
+    margin-bottom: 20px; /* Отступ снизу перед кнопками */
     width: 90%;
     max-width: 600px;
     margin: 30px auto;
