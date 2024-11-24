@@ -13,28 +13,22 @@ body {
 
 /* Стили для полоски */
 #top-bar {
-    width: 100%;
-    height: 50px; /* Высота полоски */
-    background-color: #1e1e1e; /* Цвет фона */
-    color: white; /* Цвет текста */
-    display: flex; /* Для выравнивания содержимого */
-    align-items: center; /* По вертикали */
-    justify-content: space-between; /* Между элементами */
-    position: fixed; /* Фиксируем вверху страницы */
+    position: fixed; /* Закрепляет полоску сверху */
     top: 0;
     left: 0;
-    z-index: 1000; /* Чтобы перекрывать другие элементы */
-    padding: 0 20px; /* Отступы внутри полоски */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень */
+    width: 100%; /* Растягивает полоску на всю ширину */
+    background-color: #333; /* Цвет фона */
+    color: white; /* Цвет текста */
+    padding: 10px;
+    z-index: 1000; /* Повышает уровень слоёв, чтобы полоска была выше всего остального */
 }
 
-/* Ссылки в полоске */
 #top-bar a {
-    color: white;
+    color: white; /* Цвет ссылок */
     text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
+    margin-right: 15px; /* Отступ между ссылками */
 }
+
 
 #top-bar a:hover {
     text-decoration: underline;
@@ -63,6 +57,7 @@ body {
     background-color: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 60px; /* Отступ сверху, чтобы контент не заходил под полоску */
 }
 
 /* Вопрос */
@@ -76,10 +71,6 @@ body {
 /* Скрытые элементы по умолчанию */
 .hidden {
     display: none;
-}
-
-.visible {
-    display: block; /* Или другой подходящий стиль, например, inline-block */
 }
 
 /* Кнопки для ответов */
@@ -111,6 +102,7 @@ body {
     justify-content: center;
     text-align: center;
     padding: 20px;
+    margin-top: 60px; /* Отступ сверху, чтобы контент не заходил под полоску */
 }
 
 .result-text {
