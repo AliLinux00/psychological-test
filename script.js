@@ -73,19 +73,6 @@ function answer(points) {
     }
 }
 
-function showResult() {
-    document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
-    document.getElementById("result").classList.remove("hidden"); // Показать результат
-
-    const finalResultText = document.getElementById("final-result-text");
-    finalResultText.textContent =
-        score >= 12
-            ? "Вы — активная личность. Полны энергии и идей!"
-            : score >= 6
-            ? "Вы — уравновешенная личность. Находите гармонию в жизни."
-            : "Вы — стрессовая личность. Склонны к тревожности, берегите себя.";
-}
-
 function displayShareMessage() {
     document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
     document.getElementById("result").classList.remove("hidden"); // Показать блок результата
@@ -93,12 +80,20 @@ function displayShareMessage() {
 }
 
 function shareAndRevealResult() {
-    shareOnWhatsApp(); // Открыть WhatsApp
-    // Запустить таймер на 20 секунд
+    // Открыть WhatsApp с сообщением
+    shareOnWhatsApp();
+
+    // Через 20 секунд скрыть блок с сообщением и показать результат
     setTimeout(() => {
         document.getElementById("share-message").classList.add("hidden"); // Скрыть сообщение
-        document.getElementById("final-result-text").classList.remove("hidden"); // Показать результат
-    }, 20000); // 20 секунд = 20000 мс
+        document.getElementById("final-result-text").classList.remove("hidden"); // Показать текст результата
+        document.getElementById("final-result-text").textContent =
+            score >= 12
+                ? "Вы — активная личность. Полны энергии и идей!"
+                : score >= 6
+                ? "Вы — уравновешенная личность. Находите гармонию в жизни."
+                : "Вы — стрессовая личность. Склонны к тревожности, берегите себя.";
+    }, 20000); // Задержка в 20 секунд
 }
 
 // Функция для WhatsApp
