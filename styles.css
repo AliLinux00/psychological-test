@@ -97,7 +97,6 @@ body {
 /* Стиль для блока с результатами */
 #result {
     background-color: #333; /* Темный фон блока */
-    border: 1px solid #ddd; /* Лёгкая рамка */
     border-radius: 8px; /* Скруглённые углы */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объёма */
     padding: 20px; /* Отступ внутри блока */
