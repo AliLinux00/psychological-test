@@ -96,7 +96,7 @@ body {
 
 /* Стиль для блока с результатами */
 #result {
-    background-color: #f9f9f9; /* Цвет фона блока */
+    background-color: #333; /* Темный фон блока */
     border: 1px solid #ddd; /* Лёгкая рамка */
     border-radius: 8px; /* Скруглённые углы */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объёма */
@@ -115,7 +115,7 @@ body {
     font-family: 'Arial', sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: #fff; /* Белый цвет текста для лучшего контраста с темным фоном */
+    color: #fff; /* Белый цвет текста для контраста с темным фоном */
     padding: 20px;
     background-color: #333; /* Темный фон блока с результатом */
     border-radius: 8px;
@@ -131,7 +131,7 @@ body {
     margin: 0;
     font-size: 20px;
     font-weight: bold;
-    color: #f1c40f; /* Яркий цвет для заголовков текста */
+    color: #fff; /* Белый цвет текста для всех абзацев */
 }
 
 .result-text.active {
