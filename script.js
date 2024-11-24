@@ -85,23 +85,26 @@ function shareAndRevealResult() {
 
     // Через 20 секунд скрыть блок с сообщением и показать результат
     setTimeout(() => {
-        document.getElementById("share-message").classList.add("hidden"); // Скрыть сообщение
-        document.getElementById("final-result-text").classList.remove("hidden"); // Показать текст результата
-        document.getElementById("final-result-text").textContent =
+        document.getElementById("share-message").classList.add("hidden"); // Скрыть сообщение "Поделиться"
+        
+        // Добавить текст результата в блок и показать его
+        const finalResultText = document.getElementById("final-result-text");
+        finalResultText.textContent =
             score >= 12
                 ? "Вы — активная личность. Полны энергии и идей!"
                 : score >= 6
                 ? "Вы — уравновешенная личность. Находите гармонию в жизни."
                 : "Вы — стрессовая личность. Склонны к тревожности, берегите себя.";
+        finalResultText.classList.remove("hidden"); // Показать текст результата
     }, 20000); // Задержка в 20 секунд
 }
 
-// Функция для WhatsApp
 function shareOnWhatsApp() {
-    const message = "Пройди этот тест и у знай какой ты человек! https://example.com";
+    const message = "Пройди этот тест и узнай какой ты человек! https://example.com";
     const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 }
+
 
 
 // Показ первого вопроса
