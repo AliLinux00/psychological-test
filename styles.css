@@ -96,12 +96,19 @@ body {
 
 /* Стиль для блока с результатами */
 #result {
+    #result {
+    background-color: #f9f9f9; /* Цвет фона блока */
+    border: 1px solid #ddd; /* Лёгкая рамка */
+    border-radius: 8px; /* Скруглённые углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объёма */
+    padding: 20px; /* Отступ внутри блока */
+    margin: 20px auto; /* Отступы снаружи и выравнивание по центру */
+    max-width: 600px; /* Максимальная ширина блока */
+    text-align: center; /* Выравнивание текста */
     display: flex;
     flex-direction: column;
     align-items: center; /* Центрирование содержимого */
     justify-content: center;
-    text-align: center;
-    padding: 20px;
     margin-top: 100px; /* Отступ сверху, чтобы контент не заходил под полоску */
 }
 
