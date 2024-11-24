@@ -88,7 +88,17 @@ function showResult() {
 
 function displayShareMessage() {
     document.getElementById("quiz").style.display = "none"; // Скрыть вопросы
+    document.getElementById("result").classList.remove("hidden"); // Показать блок результата
     document.getElementById("share-message").classList.remove("hidden"); // Показать сообщение
+}
+
+function shareAndRevealResult() {
+    shareOnWhatsApp(); // Открыть WhatsApp
+    // Запустить таймер на 20 секунд
+    setTimeout(() => {
+        document.getElementById("share-message").classList.add("hidden"); // Скрыть сообщение
+        document.getElementById("final-result-text").classList.remove("hidden"); // Показать результат
+    }, 20000); // 20 секунд = 20000 мс
 }
 
 // Функция для WhatsApp
