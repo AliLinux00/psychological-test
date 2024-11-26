@@ -1,124 +1,226 @@
-/* Основной фон и текст */
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(120deg, #1e1e1e, #121212);
-    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Темный фон */
+    color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; /* Обеспечивает корректное отображение на больших экранах */
 }
 
-/* Верхняя панель */
+/* Стили для полоски */
 #top-bar {
-    position: fixed;
+    position: fixed; /* Закрепляет полоску сверху */
     top: 0;
     left: 0;
-    width: 100%;
-    background-color: #282828;
-    color: white;
-    padding: 15px 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    font-size: 18px;
-}
-
-/* Главный блок с контентом */
-#content {
-    width: 90%;
-    max-width: 800px;
-    margin: 80px auto 20px;
-    padding: 20px;
-    background: rgba(30, 30, 30, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-}
-
-/* Вопросы и их оформление */
-#quiz {
-    width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #202020;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-/* Оформление текста вопросов */
-#quiz p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #e0e0e0;
-}
-
-/* Кнопки вариантов ответа */
-.answer-button {
-    width: 100%;
+    width: 100%; /* Растягивает полоску на всю ширину */
+    background-color: #333; /* Цвет фона */
+    color: white; /* Цвет текста */
     padding: 10px;
-    margin: 10px 0;
-    background: linear-gradient(135deg, #4caf50, #81c784);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 1000; /* Повышает уровень слоёв, чтобы полоска была выше всего остального */
 }
 
-.answer-button:hover {
-    background: linear-gradient(135deg, #388e3c, #66bb6a);
-    transform: scale(1.05);
+#top-bar a {
+    color: white; /* Цвет ссылок */
+    text-decoration: none;
+    margin-right: 15px; /* Отступ между ссылками */
 }
 
-/* Результаты */
-#result {
-    display: none;
+
+#top-bar a:hover {
+    text-decoration: underline;
+}
+
+#content {
+    margin-top: 60px; /* Отступ, чтобы полоска не перекрывала контент */
     padding: 20px;
-    margin: 30px auto;
-    background-color: #252525;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Заголовок */
+.title {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #4CAF50; /* Зеленый цвет заголовка */
     text-align: center;
 }
 
-#result p {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff;
+/* Блок вопросов */
+#quiz {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 100px; /* Отступ сверху, чтобы контент не заходил под полоску */
 }
 
-/* Кнопки в блоке результата */
-#share-button, 
-#whatsapp-button {
-    padding: 10px 15px;
-    margin: 10px;
-    font-size: 16px;
-    color: white;
-    background: #4caf50;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+/* Вопрос */
+.question {
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.4; /* Удобочитаемость текста */
 }
 
-#whatsapp-button {
-    background: #25d366;
-}
-
-#share-button:hover, 
-#whatsapp-button:hover {
-    transform: scale(1.05);
-}
-
-/* Скрытие ненужных элементов */
+/* Скрытые элементы по умолчанию */
 .hidden {
     display: none;
 }
 
-/* Анимации */
-@keyframes fadeIn {
+/* Кнопки для ответов */
+.answers button {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    text-align: center;
+}
+
+.answers button:hover {
+    background-color: #45a049;
+    transform: scale(1.03);
+}
+
+/* Стиль для блока с результатами */
+#result {
+    background-color: #333; /* Темный фон блока */
+    border-radius: 8px; /* Скруглённые углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объёма */
+    padding: 20px; /* Отступ внутри блока */
+    margin: 20px auto; /* Отступы снаружи и выравнивание по центру */
+    max-width: 600px; /* Максимальная ширина блока */
+    text-align: center; /* Выравнивание текста */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование содержимого */
+    justify-content: center;
+    margin-top: 100px; /* Отступ сверху, чтобы контент не заходил под полоску */
+}
+
+.result-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #fff; /* Белый цвет текста для контраста с темным фоном */
+    padding: 20px;
+    background-color: #333; /* Темный фон блока с результатом */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    opacity: 0;
+    transform: translateY(20px); /* Эффект появления */
+    transition: all 0.5s ease;
+}
+
+.result-text p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff; /* Белый цвет текста для всех абзацев */
+}
+
+.result-text.active {
+    opacity: 1;
+    transform: translateY(0); /* Плавное появление */
+}
+
+/* Кнопка перехода к результатам */
+#show-answer-btn {
+    margin-top: 20px; /* Расстояние между кнопками */
+}
+
+/* Финальный результат */
+#final-result {
+    font-size: 18px; /* Размер шрифта для результата */
+    margin-bottom: 20px; /* Отступ снизу перед кнопками */
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32); /* Градиент для яркости */
+    color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+#share-message {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Тень для отделения от фона */
+    position: relative; /* Относительное позиционирование для предотвращения наложений */
+}
+
+/* Для кнопки Поделиться */
+#share-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#share-button:hover {
+    background-color: #45a049;
+}
+
+/* Исправление для белого квадрата снизу */
+#quiz, #result, #top-bar {
+    position: relative; /* Для предотвращения наложения */
+    z-index: 1; /* Чтобы элементы не перекрывались */
+}
+
+
+/* Кнопка для WhatsApp */
+#whatsapp-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #25D366; /* Зеленый цвет WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#whatsapp-button:hover {
+    background-color: #1DA154;
+    transform: scale(1.05);
+}
+
+/* Добавление box-sizing для всех элементов */
+* {
+    box-sizing: border-box;
+}
+
+/* Анимация появления блока */
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -127,34 +229,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.result-text {
-    animation: fadeIn 1s ease-out;
-}
-
-/* Общая визуализация */
-hr {
-    border: none;
-    height: 1px;
-    background: #444;
-    margin: 20px 0;
-}
-
-a {
-    color: #4caf50;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Устранение белого квадрата */
-#quiz, 
-#result, 
-#content, 
-#top-bar {
-    border: none; /* Убирает контуры */
-    background: transparent; /* Прозрачный фон */
 }
